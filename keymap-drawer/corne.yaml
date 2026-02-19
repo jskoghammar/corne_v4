@@ -1,48 +1,7 @@
 layout: {zmk_keyboard: corne}
 layers:
-  Base:
-  - TAB
-  - Q
-  - W
-  - E
-  - R
-  - T
-  - Y
-  - U
-  - I
-  - O
-  - P
-  - BSPC
-  - LCTRL
-  - {t: A, h: LGUI}
-  - {t: S, h: LALT}
-  - {t: D, h: LCTRL}
-  - {t: F, h: LSHIFT}
-  - G
-  - H
-  - {t: J, h: RSHIFT}
-  - {t: K, h: RCTRL}
-  - {t: L, h: RALT}
-  - {t: ;, h: RGUI}
-  - ''''
-  - LSHFT
-  - Z
-  - X
-  - C
-  - V
-  - B
-  - N
-  - M
-  - ','
-  - .
-  - /
-  - ESC
-  - LGUI
-  - Lower
-  - SPACE
-  - RET
-  - Raise
-  - RALT
+  Base: [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC, LCTRL, A, S, D, F, G, H, J, K, L, ;, '''', LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC, LGUI, '&lwr_hold_signal',
+    SPACE, RET, '&rse_hold_signal', RALT]
   Lower:
   - TAB
   - '1'
@@ -81,7 +40,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - LGUI
-  - {type: held}
+  - {t: ▽, type: trans}
   - SPACE
   - RET
   - {t: ▽, type: trans}
@@ -127,5 +86,5 @@ layers:
   - {t: ▽, type: trans}
   - SPACE
   - RET
-  - {type: held}
+  - {t: ▽, type: trans}
   - RALT
