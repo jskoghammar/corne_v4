@@ -61,7 +61,7 @@ jobs:
             for layer in "${layers[@]}"; do
               layer_slug="$(echo "${layer}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd '[:alnum:]_-')"
               output_svg="${OUTPUT_FOLDER}/${keymap_name}-${layer_slug}.svg"
-              keymap draw --select-layers "${layer}" "${parsed_yaml}" > "${output_svg}"
+              keymap draw -s "${layer}" -- "${parsed_yaml}" > "${output_svg}"
             done
           done
 
