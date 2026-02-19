@@ -1,4 +1,4 @@
-# Example for using the keymap-drawer ZMK user config workflow
+# Draw ZMK keymaps with one keymap-drawer invocation per layer.
 name: Draw ZMK keymaps
 on:
   workflow_dispatch:  # can be triggered manually
@@ -7,16 +7,72 @@ on:
       - "config/*.keymap"
       - "config/*.dtsi"
       - "keymap_drawer.config.yaml"
+      - ".github/workflows/draw-keymaps.yml"
       # - 'boards/*/*/*.keymap'
+
+permissions:
+  contents: write
+
+env:
+  KEYMAP_PATTERNS: "config/*.keymap"
+  KEYMAP_LAYERS: "Base Lower Raise"
+  OUTPUT_FOLDER: "keymap-drawer"
+  ZMK_CONFIG_FOLDER: "config"
 
 jobs:
   draw:
-    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
-    permissions:
-      contents: write  # allow workflow to commit to the repo
-    with:
-      keymap_patterns: "config/*.keymap"        # path to the keymaps to parse
-      config_path: "keymap_drawer.config.yaml"  # config file, ignored if not exists
-      output_folder: "keymap-drawer"            # path to save produced SVG and keymap YAML files
-      parse_args: ""  # map of extra args to pass to `keymap parse`, e.g. "corne:'-l Def Lwr Rse' cradio:''"
-      draw_args: ""   # map of extra args to pass to `keymap draw`, e.g. "corne:'-k corne_rotated' cradio:'-k paroxysm'"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install keymap-drawer
+        run: pip install keymap-drawer
+
+      - name: Draw one SVG per configured layer
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          rm -rf "${OUTPUT_FOLDER}"
+          mkdir -p "${OUTPUT_FOLDER}"
+
+          parse_flags=(-z "${ZMK_CONFIG_FOLDER}")
+          if [[ -f keymap_drawer.config.yaml ]]; then
+            parse_flags+=(-c keymap_drawer.config.yaml)
+          fi
+
+          read -r -a layers <<< "${KEYMAP_LAYERS}"
+          if [[ ${#layers[@]} -eq 0 ]]; then
+            echo "KEYMAP_LAYERS must include at least one layer name."
+            exit 1
+          fi
+
+          keymaps=( ${KEYMAP_PATTERNS} )
+          if [[ ${#keymaps[@]} -eq 0 ]]; then
+            echo "No keymaps matched: ${KEYMAP_PATTERNS}"
+            exit 1
+          fi
+
+          for keymap_file in "${keymaps[@]}"; do
+            keymap_name="$(basename "${keymap_file%.keymap}")"
+            parsed_yaml="${OUTPUT_FOLDER}/${keymap_name}.yaml"
+            keymap parse "${parse_flags[@]}" "${keymap_file}" > "${parsed_yaml}"
+
+            for layer in "${layers[@]}"; do
+              layer_slug="$(echo "${layer}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd '[:alnum:]_-')"
+              output_svg="${OUTPUT_FOLDER}/${keymap_name}-${layer_slug}.svg"
+              keymap draw --select-layers "${layer}" "${parsed_yaml}" > "${output_svg}"
+            done
+          done
+
+      - name: Commit generated files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Draw keymaps"
+          file_pattern: "keymap-drawer/*"
