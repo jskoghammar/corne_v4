@@ -16,9 +16,9 @@
                         wait-ms = <0>;
                         tap-ms = <0>;
                         bindings
-                                = <&macro_press &mo 1 &kp F20>
+                                = <&macro_press &mo 1 &kp F21>
                                 , <&macro_pause_for_release>
-                                , <&macro_release &mo 1 &kp F20>
+                                , <&macro_release &mo 1 &kp F21>
                                 ;
                 };
 
@@ -28,9 +28,9 @@
                         wait-ms = <0>;
                         tap-ms = <0>;
                         bindings
-                                = <&macro_press &mo 2 &kp F21>
+                                = <&macro_press &mo 2 &kp F20>
                                 , <&macro_pause_for_release>
-                                , <&macro_release &mo 2 &kp F21>
+                                , <&macro_release &mo 2 &kp F20>
                                 ;
                 };
         };
