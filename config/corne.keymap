@@ -8,13 +8,6 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-&mt {
-        flavor = "balanced";
-        tapping-term-ms = <280>;
-        quick-tap-ms = <175>;
-        require-prior-idle-ms = <125>;
-};
-
 / {
         macros {
                 lwr_hold_signal: lwr_hold_signal {
@@ -48,13 +41,13 @@
                 default_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |GUI/A|ALT/S|CTL/D|SFT/F|  G  |   |  H  |SFT/J |CTL/K|ALT/L|GUI/;|  '   |
+// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         display-name = "Base";
                         bindings = <
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &mt LGUI A &mt LALT S &mt LCTRL D &mt LSHIFT F &kp G   &kp H &mt RSHIFT J  &mt RCTRL K &mt RALT L   &mt RGUI SEMI &kp SQT
+   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
                   &kp LGUI &lwr_hold_signal &kp SPACE   &kp RET &rse_hold_signal &kp RALT
                         >;
