@@ -15,7 +15,7 @@ permissions:
 
 env:
   KEYMAP_PATTERNS: "config/*.keymap"
-  KEYMAP_LAYERS: "Base Lower Raise"
+  KEYMAP_LAYERS: "Base Navigation Symbols"
   OUTPUT_FOLDER: "keymap-drawer"
 
 jobs:
