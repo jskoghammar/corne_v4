@@ -1,0 +1,74 @@
+draw_config:
+  dark_mode: auto
+  svg_extra_style: |
+    :root {
+      --finger-pinky: #ff595e;
+      --finger-ring: #ffca3a;
+      --finger-middle: #6a4c93;
+      --finger-index: #8ac926;
+      --finger-thumb: #1982c4;
+    }
+
+    /*
+      Corne 6x3+3 finger color coding (42 keys):
+      - Rows 1-3 use column-based fingers
+      - Row 4 (thumb cluster) is all thumbs
+      Left half columns (outer->inner): pinky, pinky, ring, middle, index, index
+      Right half columns (inner->outer): index, index, middle, ring, pinky, pinky
+    */
+    .keypos-0 rect.key:not(.held):not(.ghost),
+    .keypos-1 rect.key:not(.held):not(.ghost),
+    .keypos-12 rect.key:not(.held):not(.ghost),
+    .keypos-13 rect.key:not(.held):not(.ghost),
+    .keypos-24 rect.key:not(.held):not(.ghost),
+    .keypos-25 rect.key:not(.held):not(.ghost),
+    .keypos-10 rect.key:not(.held):not(.ghost),
+    .keypos-11 rect.key:not(.held):not(.ghost),
+    .keypos-22 rect.key:not(.held):not(.ghost),
+    .keypos-23 rect.key:not(.held):not(.ghost),
+    .keypos-34 rect.key:not(.held):not(.ghost),
+    .keypos-35 rect.key:not(.held):not(.ghost) {
+      fill: var(--finger-pinky);
+    }
+
+    .keypos-2 rect.key:not(.held):not(.ghost),
+    .keypos-14 rect.key:not(.held):not(.ghost),
+    .keypos-26 rect.key:not(.held):not(.ghost),
+    .keypos-9 rect.key:not(.held):not(.ghost),
+    .keypos-21 rect.key:not(.held):not(.ghost),
+    .keypos-33 rect.key:not(.held):not(.ghost) {
+      fill: var(--finger-ring);
+    }
+
+    .keypos-3 rect.key:not(.held):not(.ghost),
+    .keypos-15 rect.key:not(.held):not(.ghost),
+    .keypos-27 rect.key:not(.held):not(.ghost),
+    .keypos-8 rect.key:not(.held):not(.ghost),
+    .keypos-20 rect.key:not(.held):not(.ghost),
+    .keypos-32 rect.key:not(.held):not(.ghost) {
+      fill: var(--finger-middle);
+    }
+
+    .keypos-4 rect.key:not(.held):not(.ghost),
+    .keypos-5 rect.key:not(.held):not(.ghost),
+    .keypos-16 rect.key:not(.held):not(.ghost),
+    .keypos-17 rect.key:not(.held):not(.ghost),
+    .keypos-28 rect.key:not(.held):not(.ghost),
+    .keypos-29 rect.key:not(.held):not(.ghost),
+    .keypos-6 rect.key:not(.held):not(.ghost),
+    .keypos-7 rect.key:not(.held):not(.ghost),
+    .keypos-18 rect.key:not(.held):not(.ghost),
+    .keypos-19 rect.key:not(.held):not(.ghost),
+    .keypos-30 rect.key:not(.held):not(.ghost),
+    .keypos-31 rect.key:not(.held):not(.ghost) {
+      fill: var(--finger-index);
+    }
+
+    .keypos-36 rect.key:not(.held):not(.ghost),
+    .keypos-37 rect.key:not(.held):not(.ghost),
+    .keypos-38 rect.key:not(.held):not(.ghost),
+    .keypos-39 rect.key:not(.held):not(.ghost),
+    .keypos-40 rect.key:not(.held):not(.ghost),
+    .keypos-41 rect.key:not(.held):not(.ghost) {
+      fill: var(--finger-thumb);
+    }
