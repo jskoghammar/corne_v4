@@ -15,7 +15,7 @@
                         wait-ms = <0>;
                         tap-ms = <0>;
                         bindings
-                                = <&kp F19>
+                                = <&kp F18>
                                 , <&tog 1>
                                 ;
                 };
@@ -26,7 +26,7 @@
                         wait-ms = <0>;
                         tap-ms = <0>;
                         bindings
-                                = <&kp F24>
+                                = <&kp F19>
                                 , <&sl 2>
                                 ;
                 };
