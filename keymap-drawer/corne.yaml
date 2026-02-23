@@ -2,7 +2,7 @@ layout: {zmk_keyboard: corne}
 layers:
   Base: [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC, LCTRL, A, S, D, F, G, H, J, K, L, ;, '''', LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC, LGUI, '&lwr_toggle_signal',
     SPACE, RET, '&rse_oneshot_signal', RALT]
-  Lower:
+  Navigation:
   - TAB
   - '1'
   - '2'
@@ -45,7 +45,7 @@ layers:
   - RET
   - {t: ▽, type: trans}
   - RALT
-  Raise:
+  Symbols:
   - TAB
   - '!'
   - '@'
