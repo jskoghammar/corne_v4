@@ -32,6 +32,141 @@
                 };
         };
 
+
+        combos {
+                compatible = "zmk,combos";
+
+                /*
+                 * Nav layer (layer 1): left-row modifier chords with arrow keys.
+                 * Left-row indices on Nav second row: 12..16
+                 * Arrow indices: LEFT=18, DOWN=19, UP=20, RIGHT=21
+                 */
+                combo_nav_i0_left {
+                        timeout-ms = <100>;
+                        key-positions = <12 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LEFT)>;
+                };
+                combo_nav_i0_down {
+                        timeout-ms = <100>;
+                        key-positions = <12 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(DOWN)>;
+                };
+                combo_nav_i0_up {
+                        timeout-ms = <100>;
+                        key-positions = <12 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(UP)>;
+                };
+                combo_nav_i0_right {
+                        timeout-ms = <100>;
+                        key-positions = <12 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(RIGHT)>;
+                };
+
+                combo_nav_i1_left {
+                        timeout-ms = <100>;
+                        key-positions = <13 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LG(LS(LEFT))))>;
+                };
+                combo_nav_i1_down {
+                        timeout-ms = <100>;
+                        key-positions = <13 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LG(LS(DOWN))))>;
+                };
+                combo_nav_i1_up {
+                        timeout-ms = <100>;
+                        key-positions = <13 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LG(LS(UP))))>;
+                };
+                combo_nav_i1_right {
+                        timeout-ms = <100>;
+                        key-positions = <13 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LG(LS(RIGHT))))>;
+                };
+
+                combo_nav_i2_left {
+                        timeout-ms = <50>;
+                        key-positions = <14 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LS(LEFT)))>;
+                };
+                combo_nav_i2_down {
+                        timeout-ms = <50>;
+                        key-positions = <14 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LS(DOWN)))>;
+                };
+                combo_nav_i2_up {
+                        timeout-ms = <100>;
+                        key-positions = <14 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LS(UP)))>;
+                };
+                combo_nav_i2_right {
+                        timeout-ms = <50>;
+                        key-positions = <14 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LS(RIGHT)))>;
+                };
+
+                combo_nav_i3_left {
+                        timeout-ms = <50>;
+                        key-positions = <15 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LEFT))>;
+                };
+                combo_nav_i3_down {
+                        timeout-ms = <100>;
+                        key-positions = <15 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(DOWN))>;
+                };
+                combo_nav_i3_up {
+                        timeout-ms = <100>;
+                        key-positions = <15 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(UP))>;
+                };
+                combo_nav_i3_right {
+                        timeout-ms = <100>;
+                        key-positions = <15 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(RIGHT))>;
+                };
+
+                combo_nav_i4_left {
+                        timeout-ms = <100>;
+                        key-positions = <16 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LEFT)>;
+                };
+                combo_nav_i4_down {
+                        timeout-ms = <100>;
+                        key-positions = <16 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(DOWN)>;
+                };
+                combo_nav_i4_up {
+                        timeout-ms = <100>;
+                        key-positions = <16 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(UP)>;
+                };
+                combo_nav_i4_right {
+                        timeout-ms = <100>;
+                        key-positions = <16 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(RIGHT)>;
+                };
+        };
+
         keymap {
                 compatible = "zmk,keymap";
 
@@ -52,13 +187,13 @@
                 navigation_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | CTRL | SCRN| LQ  | RQ  | HLF | HR  |   | LFT | DWN |  UP | RGT |     |      |
+// | CTRL |CASG | CAS | CA  | C   | CAF |   | LFT | DWN |  UP | RGT |     |      |
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         display-name = "Nav";
                         bindings = <
    &kp TAB      &kp N1           &kp N2            &kp N3            &kp N4        &kp N5   &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &kp LCTRL    &kp F13          &kp F14           &kp F15           &kp F16       &kp F17  &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+   &kp LCTRL    &none            &none             &none             &kp LCTRL     &kp LC(LA(F)) &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
    &kp LSHFT    &none            &none             &none             &none         &none    &trans   &trans   &trans &trans    &trans &trans
                           	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
