@@ -6,7 +6,7 @@ on:
     paths:
       - "config/*.keymap"
       - "config/*.dtsi"
-      - "keymap_drawer.config.yaml"
+      - "config/keymap_drawer.config.yaml"
       - ".github/workflows/draw-keymaps.yml"
       # - 'boards/*/*/*.keymap'
 
@@ -41,6 +41,8 @@ jobs:
           rm -rf "${OUTPUT_FOLDER}"
           mkdir -p "${OUTPUT_FOLDER}" "${OUTPUT_FOLDER}/img"
 
+          drawer_config="config/keymap_drawer.config.yaml"
+
           read -r -a layers <<< "${KEYMAP_LAYERS}"
           if [[ ${#layers[@]} -eq 0 ]]; then
             echo "KEYMAP_LAYERS must include at least one layer name."
@@ -61,7 +63,7 @@ jobs:
             for layer in "${layers[@]}"; do
               layer_slug="$(echo "${layer}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd '[:alnum:]_-')"
               output_svg="${OUTPUT_FOLDER}/img/${keymap_name}-${layer_slug}.svg"
-              keymap draw -s "${layer}" -- "${parsed_yaml}" > "${output_svg}"
+              keymap -c "${drawer_config}" draw -s "${layer}" -- "${parsed_yaml}" > "${output_svg}"
             done
           done
 
