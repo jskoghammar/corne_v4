@@ -141,6 +141,17 @@ path.combo { stroke: #7f7f7f; }
   --finger-middle: #6a4c93;
   --finger-index: #8ac926;
   --finger-thumb: #1982c4;
+  --legend-text: #111111;
+  --legend-stroke: #f7f7f7;
+}
+
+/* Keep key legends readable on the custom finger palette */
+text.key, text.combo {
+  fill: var(--legend-text) !important;
+  stroke: var(--legend-stroke) !important;
+  stroke-width: 3.5;
+  paint-order: stroke;
+  font-weight: 600;
 }
 
 /*
