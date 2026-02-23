@@ -32,52 +32,6 @@
                 };
         };
 
-        combos {
-                compatible = "zmk,combos";
-
-                combo_quad_left_upper {
-                        timeout-ms = <50>;
-                        key-positions = <25 14>;
-                        layers = <1>;
-                        bindings = <&kp LS(LC(LA(UP)))>;
-                };
-
-                combo_quad_left_lower {
-                        timeout-ms = <50>;
-                        key-positions = <25 26>;
-                        layers = <1>;
-                        bindings = <&kp LS(LC(LA(DOWN)))>;
-                };
-
-                combo_quad_right_upper {
-                        timeout-ms = <50>;
-                        key-positions = <27 14>;
-                        layers = <1>;
-                        bindings = <&kp LC(LA(UP))>;
-                };
-
-                combo_quad_right_lower {
-                        timeout-ms = <50>;
-                        key-positions = <27 26>;
-                        layers = <1>;
-                        bindings = <&kp LC(LA(DOWN))>;
-                };
-
-                combo_screen_left {
-                        timeout-ms = <50>;
-                        key-positions = <17 13>;
-                        layers = <1>;
-                        bindings = <&kp LG(LC(LA(LEFT)))>;
-                };
-
-                combo_screen_right {
-                        timeout-ms = <50>;
-                        key-positions = <17 15>;
-                        layers = <1>;
-                        bindings = <&kp LG(LC(LA(RIGHT)))>;
-                };
-        };
-
         keymap {
                 compatible = "zmk,keymap";
 
@@ -98,13 +52,13 @@
                 navigation_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | CTRL | LFT | UHF | RGT | FULL|SCRN |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |  QL | LHF |  QR |     |     |   |     |     |     |     |     |      |
+// | CTRL | SCRN| LQ  | RQ  | HLF | HR  |   | LFT | DWN |  UP | RGT |     |      |
+// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         display-name = "Nav";
                         bindings = <
    &kp TAB      &kp N1           &kp N2            &kp N3            &kp N4        &kp N5   &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &kp LCTRL    &kp LC(LA(LEFT)) &kp LC(LA(PG_UP)) &kp LC(LA(RIGHT)) &kp LC(LA(F)) &none    &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+   &kp LCTRL    &kp F13          &kp F14           &kp F15           &kp F16       &kp F17  &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
    &kp LSHFT    &none            &kp LC(LA(PG_DN)) &none             &none         &none    &trans   &trans   &trans &trans    &trans &trans
                           	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
