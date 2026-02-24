@@ -76,7 +76,7 @@
                 };
         };
 
-
+#ifndef KEYMAP_DRAWER
         combos {
                 compatible = "zmk,combos";
 
@@ -210,6 +210,7 @@
                         bindings = <&kp LC(RIGHT)>;
                 };
         };
+#endif
 
         keymap {
                 compatible = "zmk,keymap";
