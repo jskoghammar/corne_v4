@@ -60,10 +60,34 @@
                         ignore-modifiers;
                 };
 
+                sv_aring: sv_aring {
+                        compatible = "zmk,behavior-mod-morph";
+                        #binding-cells = <0>;
+                        bindings = <&sv_aring_lc>, <&sv_aring_uc>;
+                        mods = <(MOD_LSFT|MOD_RSFT)>;
+                        keep-mods = <(MOD_RSFT)>;
+                };
+
+                sv_adiaer: sv_adiaer {
+                        compatible = "zmk,behavior-mod-morph";
+                        #binding-cells = <0>;
+                        bindings = <&sv_adiaer_lc>, <&sv_adiaer_uc>;
+                        mods = <(MOD_LSFT|MOD_RSFT)>;
+                        keep-mods = <(MOD_RSFT)>;
+                };
+
+                sv_odiaer: sv_odiaer {
+                        compatible = "zmk,behavior-mod-morph";
+                        #binding-cells = <0>;
+                        bindings = <&sv_odiaer_lc>, <&sv_odiaer_uc>;
+                        mods = <(MOD_LSFT|MOD_RSFT)>;
+                        keep-mods = <(MOD_RSFT)>;
+                };
+
         };
 
         macros {
-                sv_aring: sv_aring {
+                sv_aring_lc: sv_aring_lc {
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
                         wait-ms = <0>;
@@ -71,7 +95,15 @@
                         bindings = <&kp RG(LBKT)>;
                 };
 
-                sv_adiaer: sv_adiaer {
+                sv_aring_uc: sv_aring_uc {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&kp RS(RG(LBKT))>;
+                };
+
+                sv_adiaer_lc: sv_adiaer_lc {
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
                         wait-ms = <0>;
@@ -79,12 +111,28 @@
                         bindings = <&kp RG(SQT)>;
                 };
 
-                sv_odiaer: sv_odiaer {
+                sv_adiaer_uc: sv_adiaer_uc {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&kp RS(RG(SQT))>;
+                };
+
+                sv_odiaer_lc: sv_odiaer_lc {
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
                         wait-ms = <0>;
                         tap-ms = <0>;
                         bindings = <&kp RG(SEMI)>;
+                };
+
+                sv_odiaer_uc: sv_odiaer_uc {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&kp RS(RG(SEMI))>;
                 };
 
                 lwr_toggle_signal: lwr_toggle_signal {
