@@ -51,6 +51,15 @@
                         bindings = <&kp LC(LA(F))>;
                 };
 
+                sl_ignmods: sl_ignmods {
+                        compatible = "zmk,behavior-sticky-key";
+                        #binding-cells = <1>;
+                        release-after-ms = <1000>;
+                        bindings = <&mo>;
+                        quick-release;
+                        ignore-modifiers;
+                };
+
         };
 
         macros {
@@ -96,7 +105,7 @@
                         tap-ms = <0>;
                         bindings
                                 = <&kp F19>
-                                , <&sl 2>
+                                , <&sl_ignmods 2>
                                 ;
                 };
         };
