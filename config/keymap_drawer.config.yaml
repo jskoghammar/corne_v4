@@ -1,8 +1,7 @@
 parse_config:
-  zmk_keycode_map:
-    AT: '"'
-    HASH: "£"
   raw_binding_map:
+    "&kp AT": '"'
+    "&kp HASH": "£"
     "&scr": "SCR"
     "&ql": "QL"
     "&qr": "QR"
