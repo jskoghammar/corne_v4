@@ -1,9 +1,9 @@
 layout: {zmk_keyboard: corne}
 layers:
-  Base: [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC, LCTRL, A, S, D, F, G, H, J, K, L, ;, '''', LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC, LGUI, '&lwr_toggle_signal',
-    SPACE, RET, '&rse_oneshot_signal', RALT]
+  Base: [↹, Q, W, E, R, T, Y, U, I, O, P, ⌫, LCTRL, A, S, D, F, G, H, J, K, L, ;, '''', LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC, LGUI, '&lwr_toggle_signal',
+    ␠, ⏎, '&rse_oneshot_signal', RALT]
   Nav:
-  - TAB
+  - ↹
   - '1'
   - '2'
   - '3'
@@ -14,17 +14,17 @@ layers:
   - '8'
   - '9'
   - '0'
-  - BSPC
+  - ⌫
   - LCTRL
   - SCR
   - QL
   - QR
   - HLF
   - FLL
-  - LEFT
-  - DOWN
-  - UP
-  - RIGHT
+  - ←
+  - ↓
+  - ↑
+  - →
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - LSHFT
@@ -41,12 +41,12 @@ layers:
   - {t: ▽, type: trans}
   - LGUI
   - {t: ▽, type: trans}
-  - SPACE
-  - RET
+  - ␠
+  - ⏎
   - {t: ▽, type: trans}
   - RALT
   Sym:
-  - TAB
+  - ↹
   - '!'
   - '"'
   - £
@@ -54,10 +54,10 @@ layers:
   - '%'
   - ^
   - '&'
-  - KP MULTIPLY
+  - '*'
   - (
   - )
-  - BSPC
+  - ⌫
   - LCTRL
   - Å
   - Ä
@@ -84,7 +84,7 @@ layers:
   - '~'
   - LGUI
   - {t: ▽, type: trans}
-  - SPACE
-  - RET
+  - ␠
+  - ⏎
   - {t: ▽, type: trans}
   - RALT
