@@ -59,9 +59,9 @@ layers:
   - )
   - BSPC
   - LCTRL
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: å, s: Å}
+  - {t: ä, s: Ä}
+  - {t: ö, s: Ö}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - '-'
