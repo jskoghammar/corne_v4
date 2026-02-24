@@ -5,15 +5,15 @@ parse_config:
   raw_binding_map:
     "&kp AT": '"'
     "&kp HASH": "£"
-    "&kp TAB": "↹"
-    "&kp BSPC": "⌫"
+    "&kp TAB": "TAB"
+    "&kp BSPC": "BSPC"
     "&kp KP_MULTIPLY": "*"
     "&kp LEFT": "←"
     "&kp DOWN": "↓"
     "&kp UP": "↑"
     "&kp RIGHT": "→"
-    "&kp RET": "⏎"
-    "&kp SPACE": "␠"
+    "&kp RET": "RET"
+    "&kp SPACE": "SPACE"
     "&scr": "SCR"
     "&ql": "QL"
     "&qr": "QR"
@@ -28,19 +28,29 @@ draw_config:
   separate_combo_diagrams: true
   svg_extra_style: |
     :root {
-      --finger-pinky: #1a1a3d;
-      --finger-ring: #4c4e76;
-      --finger-middle: #789cc4;
-      --finger-index: #f0b14c;
-      --finger-thumb: #d73c1d;
-      --legend-text: #000000;
+      --finger-pinky: #E76F51;
+      --finger-ring: #F4A261;
+      --finger-middle: #E9C46A;
+      --finger-index: #2A9D8F;
+      --finger-thumb: #264653;
+      --legend-text-dark: #111111;
+      --legend-text-light: #F8FAFC;
     }
 
-    /* Single-color legends with no outline stroke */
+    /* Dark legends by default; thumb keys switch to light legends */
     text.key, text.combo {
-      fill: var(--legend-text) !important;
+      fill: var(--legend-text-dark) !important;
       stroke: none !important;
       font-weight: 600;
+    }
+
+    .keypos-36 text.key,
+    .keypos-37 text.key,
+    .keypos-38 text.key,
+    .keypos-39 text.key,
+    .keypos-40 text.key,
+    .keypos-41 text.key {
+      fill: var(--legend-text-light) !important;
     }
 
     /*
