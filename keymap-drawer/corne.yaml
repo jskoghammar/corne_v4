@@ -16,11 +16,11 @@ layers:
   - '0'
   - BSPC
   - LCTRL
-  - '&scr'
-  - '&ql'
-  - '&qr'
-  - '&hlf'
-  - '&fll'
+  - SCR
+  - QL
+  - QR
+  - HLF
+  - FLL
   - LEFT
   - DOWN
   - UP
