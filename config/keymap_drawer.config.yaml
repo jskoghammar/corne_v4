@@ -5,6 +5,9 @@ parse_config:
     "&qr": "QR"
     "&hlf": "HLF"
     "&fll": "FLL"
+    "&sv_aring": { t: "å", s: "Å" }
+    "&sv_adiaer": { t: "ä", s: "Ä" }
+    "&sv_odiaer": { t: "ö", s: "Ö" }
 
 draw_config:
   dark_mode: auto
