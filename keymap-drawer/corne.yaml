@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: corne}
 layers:
-  Base: [↹, Q, W, E, R, T, Y, U, I, O, P, ⌫, LCTRL, A, S, D, F, G, H, J, K, L, ;, '''', LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC, LGUI, '&lwr_toggle_signal', ␠,
-    ⏎, '&rse_oneshot_signal', RALT]
+  Base: [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC, LCTRL, A, S, D, F, G, H, J, K, L, SEMI, SQT, LSHFT, Z, X, C, V, B, N, M, COMMA, DOT, FSLH, ESC, LGUI, '&lwr_toggle_signal',
+    SPACE, RET, '&rse_oneshot_signal', RALT]
   Nav:
   - ↹
   - '1'
@@ -46,42 +46,42 @@ layers:
   - {t: ▽, type: trans}
   - RALT
   Sym:
-  - ↹
-  - '!'
+  - TAB
+  - EXCL
   - '"'
   - £
-  - $
-  - '%'
-  - ^
-  - '&'
-  - '*'
-  - (
-  - )
-  - ⌫
+  - DLLR
+  - PRCNT
+  - CARET
+  - AMPS
+  - KP MULTIPLY
+  - LPAR
+  - RPAR
+  - BSPC
   - LCTRL
   - Å
   - Ä
   - Ö
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '-'
-  - '='
-  - '['
-  - ']'
-  - \
-  - '`'
+  - MINUS
+  - EQUAL
+  - LBKT
+  - RBKT
+  - BSLH
+  - GRAVE
   - LSHFT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - _
-  - +
-  - '{'
-  - '}'
-  - '|'
-  - '~'
+  - UNDER
+  - PLUS
+  - LBRC
+  - RBRC
+  - PIPE
+  - TILDE
   - LGUI
   - {t: ▽, type: trans}
   - ␠
