@@ -1,0 +1,306 @@
+[
+  {
+    "BTTLastUpdatedAt" : 1771875496.1313701,
+    "BTTTriggerType" : 0,
+    "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+    "BTTUUID" : "A191F766-6641-45AE-AA40-311FA981C8C2",
+    "BTTAdditionalConfiguration" : "1048592",
+    "BTTShortcutScope" : 0,
+    "BTTShortcutKeyboardType" : 1204,
+    "BTTTriggerOnDown" : 1,
+    "BTTLayoutIndependentChar" : ";",
+    "BTTShortcutKeyCode" : 41,
+    "BTTShortcutAdvancedModifierKeys" : "1048592",
+    "BTTShortcutModifierKeys" : 1048576,
+    "BTTOrder" : 1,
+    "BTTAutoAdaptToKeyboardLayout" : 0,
+    "BTTActionsToExecute" : [
+      {
+        "BTTLastUpdatedAt" : 1758036975.069021,
+        "BTTTriggerParentUUID" : "A191F766-6641-45AE-AA40-311FA981C8C2",
+        "BTTIsPureAction" : true,
+        "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+        "BTTUUID" : "14EA650F-02E8-43C8-A04E-B8104FC32583",
+        "BTTPredefinedActionType" : 118,
+        "BTTPredefinedActionName" : "Insert  or  Type  or  Paste Custom Text",
+        "BTTAdditionalActionData" : {
+          "BTTActionTextToPaste" : "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2759\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;\\red24\\green25\\blue26;\\red246\\green247\\blue249;}\n{\\*\\expandedcolortbl;;\\cssrgb\\c12549\\c12941\\c13333;\\cssrgb\\c97255\\c97647\\c98039;}\n\\deftab720\n\\pard\\pardeftab720\\partightenfactor0\n\n\\f0\\fs28 \\cf2 \\cb3 \\expnd0\\expndtw0\\kerning0\n\\outl0\\strokewidth0 \\strokec2 \\'f6}"
+        },
+        "BTTMoveCursorLeftBy" : "0",
+        "BTTShortcutKeyboardType" : 0,
+        "BTTShortcutKeyCode" : -1,
+        "BTTOrder" : 2,
+        "BTTAutoAdaptToKeyboardLayout" : 0
+      }
+    ],
+    "BTTTriggerConfig" : {
+      "BTTLeftRightModifierDifferentiation" : 1
+    }
+  },
+  {
+    "BTTLastUpdatedAt" : 1771875496.131336,
+    "BTTTriggerType" : 0,
+    "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+    "BTTUUID" : "7A946099-67F8-4AD4-990F-3E1105FA3CB5",
+    "BTTAdditionalConfiguration" : "1048592",
+    "BTTShortcutScope" : 0,
+    "BTTShortcutKeyboardType" : 1204,
+    "BTTTriggerOnDown" : 1,
+    "BTTLayoutIndependentChar" : "'",
+    "BTTShortcutKeyCode" : 39,
+    "BTTShortcutAdvancedModifierKeys" : "1048592",
+    "BTTShortcutModifierKeys" : 1048576,
+    "BTTOrder" : 2,
+    "BTTAutoAdaptToKeyboardLayout" : 0,
+    "BTTActionsToExecute" : [
+      {
+        "BTTLastUpdatedAt" : 1758036975.0717468,
+        "BTTTriggerParentUUID" : "7A946099-67F8-4AD4-990F-3E1105FA3CB5",
+        "BTTIsPureAction" : true,
+        "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+        "BTTUUID" : "6F57F81B-A49D-4865-8063-EFF9F0D7A0DA",
+        "BTTPredefinedActionType" : 118,
+        "BTTPredefinedActionName" : "Insert  or  Type  or  Paste Custom Text",
+        "BTTAdditionalActionData" : {
+          "BTTActionTextToPaste" : "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2759\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;\\red24\\green25\\blue26;\\red246\\green247\\blue249;}\n{\\*\\expandedcolortbl;;\\cssrgb\\c12549\\c12941\\c13333;\\cssrgb\\c97255\\c97647\\c98039;}\n\\deftab720\n\\pard\\pardeftab720\\partightenfactor0\n\n\\f0\\fs28 \\cf2 \\cb3 \\expnd0\\expndtw0\\kerning0\n\\outl0\\strokewidth0 \\strokec2 \\'e4}"
+        },
+        "BTTMoveCursorLeftBy" : "(null)",
+        "BTTShortcutKeyboardType" : 0,
+        "BTTShortcutKeyCode" : -1,
+        "BTTOrder" : 3,
+        "BTTAutoAdaptToKeyboardLayout" : 0
+      }
+    ],
+    "BTTTriggerConfig" : {
+      "BTTLeftRightModifierDifferentiation" : 1
+    }
+  },
+  {
+    "BTTLastUpdatedAt" : 1771875496.1313829,
+    "BTTTriggerType" : 0,
+    "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+    "BTTUUID" : "AECDC3A9-EE7C-469D-85A6-F20AE5B1E748",
+    "BTTAdditionalConfiguration" : "1048592",
+    "BTTShortcutScope" : 0,
+    "BTTShortcutKeyboardType" : 1204,
+    "BTTTriggerOnDown" : 1,
+    "BTTLayoutIndependentChar" : "[",
+    "BTTShortcutKeyCode" : 33,
+    "BTTShortcutAdvancedModifierKeys" : "1048592",
+    "BTTShortcutModifierKeys" : 1048576,
+    "BTTOrder" : 3,
+    "BTTAutoAdaptToKeyboardLayout" : 0,
+    "BTTActionsToExecute" : [
+      {
+        "BTTLastUpdatedAt" : 1758036975.0728331,
+        "BTTTriggerParentUUID" : "AECDC3A9-EE7C-469D-85A6-F20AE5B1E748",
+        "BTTIsPureAction" : true,
+        "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+        "BTTUUID" : "39E33965-D03B-45F7-8174-BA3BDC621288",
+        "BTTPredefinedActionType" : 118,
+        "BTTPredefinedActionName" : "Insert  or  Type  or  Paste Custom Text",
+        "BTTAdditionalActionData" : {
+          "BTTActionTextToPaste" : "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2759\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;\\red24\\green25\\blue26;\\red246\\green247\\blue249;}\n{\\*\\expandedcolortbl;;\\cssrgb\\c12549\\c12941\\c13333;\\cssrgb\\c97255\\c97647\\c98039;}\n\\deftab720\n\\pard\\pardeftab720\\partightenfactor0\n\n\\f0\\fs28 \\cf2 \\cb3 \\expnd0\\expndtw0\\kerning0\n\\outl0\\strokewidth0 \\strokec2 \\'e5}"
+        },
+        "BTTMoveCursorLeftBy" : "(null)",
+        "BTTShortcutKeyboardType" : 0,
+        "BTTShortcutKeyCode" : -1,
+        "BTTOrder" : 4,
+        "BTTAutoAdaptToKeyboardLayout" : 0
+      }
+    ],
+    "BTTTriggerConfig" : {
+      "BTTLeftRightModifierDifferentiation" : 1
+    }
+  },
+  {
+    "BTTLastUpdatedAt" : 1771875496.1313491,
+    "BTTTriggerType" : 0,
+    "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+    "BTTUUID" : "D672FE17-53EF-4114-9AE8-97EAF87FBCD2",
+    "BTTAdditionalConfiguration" : "1179668",
+    "BTTShortcutScope" : 0,
+    "BTTShortcutKeyboardType" : 1204,
+    "BTTTriggerOnDown" : 1,
+    "BTTLayoutIndependentChar" : ";",
+    "BTTShortcutKeyCode" : 41,
+    "BTTShortcutAdvancedModifierKeys" : "1179668",
+    "BTTShortcutModifierKeys" : 1179648,
+    "BTTOrder" : 4,
+    "BTTAutoAdaptToKeyboardLayout" : 0,
+    "BTTActionsToExecute" : [
+      {
+        "BTTLastUpdatedAt" : 1758036975.073565,
+        "BTTTriggerParentUUID" : "D672FE17-53EF-4114-9AE8-97EAF87FBCD2",
+        "BTTIsPureAction" : true,
+        "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+        "BTTUUID" : "584FDA88-D72A-440C-B6AD-12413090A7C8",
+        "BTTPredefinedActionType" : 118,
+        "BTTPredefinedActionName" : "Insert  or  Type  or  Paste Custom Text",
+        "BTTAdditionalActionData" : {
+          "BTTActionTextToPaste" : "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2759\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;\\red24\\green25\\blue26;\\red246\\green247\\blue249;}\n{\\*\\expandedcolortbl;;\\cssrgb\\c12549\\c12941\\c13333;\\cssrgb\\c97255\\c97647\\c98039;}\n\\deftab720\n\\pard\\pardeftab720\\partightenfactor0\n\n\\f0\\fs28 \\cf2 \\cb3 \\expnd0\\expndtw0\\kerning0\n\\outl0\\strokewidth0 \\strokec2 \\'d6}"
+        },
+        "BTTMoveCursorLeftBy" : "0",
+        "BTTShortcutKeyboardType" : 0,
+        "BTTShortcutKeyCode" : -1,
+        "BTTOrder" : 5,
+        "BTTAutoAdaptToKeyboardLayout" : 0
+      }
+    ],
+    "BTTTriggerConfig" : {
+      "BTTLeftRightModifierDifferentiation" : 1
+    }
+  },
+  {
+    "BTTLastUpdatedAt" : 1771875496.131362,
+    "BTTTriggerType" : 0,
+    "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+    "BTTUUID" : "7B9B16A1-276C-46D7-8A50-93972955090E",
+    "BTTAdditionalConfiguration" : "1179668",
+    "BTTShortcutScope" : 0,
+    "BTTShortcutKeyboardType" : 1204,
+    "BTTTriggerOnDown" : 1,
+    "BTTLayoutIndependentChar" : "'",
+    "BTTShortcutKeyCode" : 39,
+    "BTTShortcutAdvancedModifierKeys" : "1179668",
+    "BTTShortcutModifierKeys" : 1179648,
+    "BTTOrder" : 5,
+    "BTTAutoAdaptToKeyboardLayout" : 0,
+    "BTTActionsToExecute" : [
+      {
+        "BTTLastUpdatedAt" : 1758036975.0742669,
+        "BTTTriggerParentUUID" : "7B9B16A1-276C-46D7-8A50-93972955090E",
+        "BTTIsPureAction" : true,
+        "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+        "BTTUUID" : "E7635045-57EC-4439-A9D3-647E2207F8B8",
+        "BTTPredefinedActionType" : 118,
+        "BTTPredefinedActionName" : "Insert  or  Type  or  Paste Custom Text",
+        "BTTAdditionalActionData" : {
+          "BTTActionTextToPaste" : "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2759\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;\\red24\\green25\\blue26;\\red246\\green247\\blue249;}\n{\\*\\expandedcolortbl;;\\cssrgb\\c12549\\c12941\\c13333;\\cssrgb\\c97255\\c97647\\c98039;}\n\\deftab720\n\\pard\\pardeftab720\\partightenfactor0\n\n\\f0\\fs28 \\cf2 \\cb3 \\expnd0\\expndtw0\\kerning0\n\\outl0\\strokewidth0 \\strokec2 \\'c4}"
+        },
+        "BTTMoveCursorLeftBy" : "(null)",
+        "BTTShortcutKeyboardType" : 0,
+        "BTTShortcutKeyCode" : -1,
+        "BTTOrder" : 6,
+        "BTTAutoAdaptToKeyboardLayout" : 0
+      }
+    ],
+    "BTTTriggerConfig" : {
+      "BTTLeftRightModifierDifferentiation" : 1
+    }
+  },
+  {
+    "BTTLastUpdatedAt" : 1771875496.131366,
+    "BTTTriggerType" : 0,
+    "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+    "BTTUUID" : "BA7A2E9D-6D5A-4ED9-8819-869D77ABA29A",
+    "BTTAdditionalConfiguration" : "1179668",
+    "BTTShortcutScope" : 0,
+    "BTTShortcutKeyboardType" : 1204,
+    "BTTTriggerOnDown" : 1,
+    "BTTLayoutIndependentChar" : "[",
+    "BTTShortcutKeyCode" : 33,
+    "BTTShortcutAdvancedModifierKeys" : "1179668",
+    "BTTShortcutModifierKeys" : 1179648,
+    "BTTOrder" : 6,
+    "BTTAutoAdaptToKeyboardLayout" : 0,
+    "BTTActionsToExecute" : [
+      {
+        "BTTLastUpdatedAt" : 1758036975.07497,
+        "BTTTriggerParentUUID" : "BA7A2E9D-6D5A-4ED9-8819-869D77ABA29A",
+        "BTTIsPureAction" : true,
+        "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+        "BTTUUID" : "2FF67669-85C8-4B6D-8C0B-59EA9B20EC29",
+        "BTTPredefinedActionType" : 118,
+        "BTTPredefinedActionName" : "Insert  or  Type  or  Paste Custom Text",
+        "BTTAdditionalActionData" : {
+          "BTTActionTextToPaste" : "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2759\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;}\n{\\colortbl;\\red255\\green255\\blue255;\\red24\\green25\\blue26;\\red246\\green247\\blue249;}\n{\\*\\expandedcolortbl;;\\cssrgb\\c12549\\c12941\\c13333;\\cssrgb\\c97255\\c97647\\c98039;}\n\\deftab720\n\\pard\\pardeftab720\\partightenfactor0\n\n\\f0\\fs28 \\cf2 \\cb3 \\expnd0\\expndtw0\\kerning0\n\\outl0\\strokewidth0 \\strokec2 \\'c5}"
+        },
+        "BTTMoveCursorLeftBy" : "(null)",
+        "BTTShortcutKeyboardType" : 0,
+        "BTTShortcutKeyCode" : -1,
+        "BTTOrder" : 7,
+        "BTTAutoAdaptToKeyboardLayout" : 0
+      }
+    ],
+    "BTTTriggerConfig" : {
+      "BTTLeftRightModifierDifferentiation" : 1
+    }
+  },
+  {
+    "BTTLastUpdatedAt" : 1771875496.1313529,
+    "BTTTriggerType" : 0,
+    "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+    "BTTUUID" : "0605CDD5-5800-41A7-90CB-0BF295985C17",
+    "BTTAdditionalConfiguration" : "1048592",
+    "BTTShortcutScope" : 0,
+    "BTTShortcutKeyboardType" : 1204,
+    "BTTTriggerOnDown" : 1,
+    "BTTLayoutIndependentChar" : "m",
+    "BTTShortcutKeyCode" : 46,
+    "BTTShortcutAdvancedModifierKeys" : "1048592",
+    "BTTShortcutModifierKeys" : 1048576,
+    "BTTOrder" : 7,
+    "BTTAutoAdaptToKeyboardLayout" : 0,
+    "BTTActionsToExecute" : [
+      {
+        "BTTLastUpdatedAt" : 1758036975.075685,
+        "BTTTriggerParentUUID" : "0605CDD5-5800-41A7-90CB-0BF295985C17",
+        "BTTIsPureAction" : true,
+        "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+        "BTTUUID" : "0D9AD748-444C-4C10-A566-C403D9273922",
+        "BTTPredefinedActionType" : 118,
+        "BTTPredefinedActionName" : "Insert  or  Type  or  Paste Custom Text",
+        "BTTAdditionalActionData" : {
+          "BTTActionTextToPaste" : "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2759\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fnil\\fcharset0 HelveticaNeue;}\n{\\colortbl;\\red255\\green255\\blue255;\\red255\\green255\\blue255;}\n{\\*\\expandedcolortbl;;\\csgray\\c100000;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\pardirnatural\\qc\\partightenfactor0\n\n\\f0\\fs24 \\cf2 joel.skoghammar@scania.com}"
+        },
+        "BTTMoveCursorLeftBy" : "(null)",
+        "BTTShortcutKeyboardType" : 0,
+        "BTTShortcutKeyCode" : -1,
+        "BTTOrder" : 3,
+        "BTTAutoAdaptToKeyboardLayout" : 0
+      }
+    ],
+    "BTTTriggerConfig" : {
+      "BTTLeftRightModifierDifferentiation" : 1
+    }
+  },
+  {
+    "BTTLastUpdatedAt" : 1771875496.131345,
+    "BTTTriggerType" : 0,
+    "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+    "BTTUUID" : "7956116C-C4C0-44CC-8EEA-207D1CE9A7F8",
+    "BTTAdditionalConfiguration" : "1048592",
+    "BTTShortcutScope" : 0,
+    "BTTShortcutKeyboardType" : 1204,
+    "BTTTriggerOnDown" : 1,
+    "BTTLayoutIndependentChar" : "j",
+    "BTTShortcutKeyCode" : 38,
+    "BTTShortcutAdvancedModifierKeys" : "1048592",
+    "BTTShortcutModifierKeys" : 1048576,
+    "BTTOrder" : 8,
+    "BTTAutoAdaptToKeyboardLayout" : 0,
+    "BTTActionsToExecute" : [
+      {
+        "BTTLastUpdatedAt" : 1758036975.077049,
+        "BTTTriggerParentUUID" : "7956116C-C4C0-44CC-8EEA-207D1CE9A7F8",
+        "BTTIsPureAction" : true,
+        "BTTTriggerClass" : "BTTTriggerTypeKeyboardShortcut",
+        "BTTUUID" : "A9D07922-7D73-4F85-B847-8E23CC4A207E",
+        "BTTPredefinedActionType" : 118,
+        "BTTPredefinedActionName" : "Insert  or  Type  or  Paste Custom Text",
+        "BTTAdditionalActionData" : {
+          "BTTActionTextToPaste" : "{\\rtf1\\ansi\\ansicpg1252\\cocoartf2759\n\\cocoatextscaling0\\cocoaplatform0{\\fonttbl\\f0\\fnil\\fcharset0 HelveticaNeue;}\n{\\colortbl;\\red255\\green255\\blue255;\\red255\\green255\\blue255;}\n{\\*\\expandedcolortbl;;\\csgray\\c100000;}\n\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\pardirnatural\\qc\\partightenfactor0\n\n\\f0\\fs24 \\cf2 jskckt}"
+        },
+        "BTTMoveCursorLeftBy" : "(null)",
+        "BTTShortcutKeyboardType" : 0,
+        "BTTShortcutKeyCode" : -1,
+        "BTTOrder" : 8,
+        "BTTAutoAdaptToKeyboardLayout" : 0
+      }
+    ],
+    "BTTTriggerConfig" : {
+      "BTTLeftRightModifierDifferentiation" : 1
+    }
+  }
+]

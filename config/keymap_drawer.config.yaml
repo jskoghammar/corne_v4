@@ -1,10 +1,16 @@
 parse_config:
+  zmk_keycode_map:
+    AT: '"'
+    HASH: "£"
   raw_binding_map:
     "&scr": "SCR"
     "&ql": "QL"
     "&qr": "QR"
     "&hlf": "HLF"
     "&fll": "FLL"
+    "&sv_aring": { t: "Å" }
+    "&sv_adiaer": { t: "Ä" }
+    "&sv_odiaer": { t: "Ö" }
 
 draw_config:
   dark_mode: auto
