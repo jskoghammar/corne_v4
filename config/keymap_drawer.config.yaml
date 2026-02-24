@@ -2,6 +2,9 @@ parse_config:
   raw_binding_map:
     "&kp AT": '"'
     "&kp HASH": "£"
+    "&kp TAB": "↹"
+    "&kp BSPC": "⌫"
+    "&kp KP_MULTIPLY": "*"
     "&scr": "SCR"
     "&ql": "QL"
     "&qr": "QR"
