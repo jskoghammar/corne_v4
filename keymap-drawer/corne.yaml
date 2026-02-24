@@ -2,7 +2,7 @@ layout: {zmk_keyboard: corne}
 layers:
   Base: [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC, LCTRL, A, S, D, F, G, H, J, K, L, ;, '''', LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC, LGUI, '&lwr_toggle_signal',
     SPACE, RET, '&rse_oneshot_signal', RALT]
-  Navigation:
+  Nav:
   - TAB
   - '1'
   - '2'
@@ -16,11 +16,11 @@ layers:
   - '0'
   - BSPC
   - LCTRL
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - '&scr'
+  - '&ql'
+  - '&qr'
+  - '&hlf'
+  - '&fll'
   - LEFT
   - DOWN
   - UP
@@ -28,11 +28,11 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - LSHFT
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -45,7 +45,7 @@ layers:
   - RET
   - {t: ▽, type: trans}
   - RALT
-  Symbols:
+  Sym:
   - TAB
   - '!'
   - '@'
@@ -88,3 +88,64 @@ layers:
   - RET
   - {t: ▽, type: trans}
   - RALT
+combos:
+- p: [12, 18]
+  k: Ctl+LEFT
+  l: [Nav]
+- p: [12, 19]
+  k: Ctl+DOWN
+  l: [Nav]
+- p: [12, 20]
+  k: Ctl+UP
+  l: [Nav]
+- p: [12, 21]
+  k: Ctl+RIGHT
+  l: [Nav]
+- p: [13, 18]
+  k: Hyper+LEFT
+  l: [Nav]
+- p: [13, 19]
+  k: Hyper+DOWN
+  l: [Nav]
+- p: [13, 20]
+  k: Hyper+UP
+  l: [Nav]
+- p: [13, 21]
+  k: Hyper+RIGHT
+  l: [Nav]
+- p: [14, 18]
+  k: Meh+LEFT
+  l: [Nav]
+- p: [14, 19]
+  k: Meh+DOWN
+  l: [Nav]
+- p: [14, 20]
+  k: Meh+UP
+  l: [Nav]
+- p: [14, 21]
+  k: Meh+RIGHT
+  l: [Nav]
+- p: [15, 18]
+  k: Ctl+Alt+LEFT
+  l: [Nav]
+- p: [15, 19]
+  k: Ctl+Alt+DOWN
+  l: [Nav]
+- p: [15, 20]
+  k: Ctl+Alt+UP
+  l: [Nav]
+- p: [15, 21]
+  k: Ctl+Alt+RIGHT
+  l: [Nav]
+- p: [16, 18]
+  k: Ctl+LEFT
+  l: [Nav]
+- p: [16, 19]
+  k: Ctl+DOWN
+  l: [Nav]
+- p: [16, 20]
+  k: Ctl+UP
+  l: [Nav]
+- p: [16, 21]
+  k: Ctl+RIGHT
+  l: [Nav]
