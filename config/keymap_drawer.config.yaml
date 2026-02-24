@@ -1,19 +1,37 @@
 parse_config:
   zmk_keycode_map:
-    AT: '"'
-    HASH: "£"
+    EXCL: "!"
+    DLLR: "$"
+    PRCNT: "%"
+    CARET: "^"
+    AMPS: "&"
+    KP_MULTIPLY: "*"
+    LPAR: "("
+    RPAR: ")"
+    MINUS: "-"
+    EQUAL: "="
+    LBKT: "["
+    RBKT: "]"
+    GRAVE: "`"
+    UNDER: "_"
+    PLUS: "+"
+    LBRC: "{"
+    RBRC: "}"
+    SEMI: ";"
+    SQT: "'"
+    COMMA: ","
+    DOT: "."
+    FSLH: "/"
   raw_binding_map:
-    "&kp AT": '"'
-    "&kp HASH": "£"
-    "&kp TAB": "↹"
-    "&kp BSPC": "⌫"
-    "&kp KP_MULTIPLY": "*"
+    "&kp LS(SQT)": "@"
+    "&kp NON_US_HASH": "#"
+    "&kp NON_US_BSLH": "\\"
+    "&kp LS(NON_US_BSLH)": "|"
+    "&kp LS(NON_US_HASH)": "~"
     "&kp LEFT": "←"
     "&kp DOWN": "↓"
     "&kp UP": "↑"
     "&kp RIGHT": "→"
-    "&kp RET": "⏎"
-    "&kp SPACE": "␠"
     "&scr": "SCR"
     "&ql": "QL"
     "&qr": "QR"
@@ -28,19 +46,29 @@ draw_config:
   separate_combo_diagrams: true
   svg_extra_style: |
     :root {
-      --finger-pinky: #1a1a3d;
-      --finger-ring: #4c4e76;
-      --finger-middle: #789cc4;
-      --finger-index: #f0b14c;
-      --finger-thumb: #d73c1d;
-      --legend-text: #000000;
+      --finger-pinky: #E76F51;
+      --finger-ring: #F4A261;
+      --finger-middle: #E9C46A;
+      --finger-index: #2A9D8F;
+      --finger-thumb: #264653;
+      --legend-text-dark: #111111;
+      --legend-text-light: #F8FAFC;
     }
 
-    /* Single-color legends with no outline stroke */
+    /* Dark legends by default; thumb keys switch to light legends */
     text.key, text.combo {
-      fill: var(--legend-text) !important;
+      fill: var(--legend-text-dark) !important;
       stroke: none !important;
       font-weight: 600;
+    }
+
+    .keypos-36 text.key,
+    .keypos-37 text.key,
+    .keypos-38 text.key,
+    .keypos-39 text.key,
+    .keypos-40 text.key,
+    .keypos-41 text.key {
+      fill: var(--legend-text-light) !important;
     }
 
     /*
