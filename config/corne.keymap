@@ -8,6 +8,50 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+        behaviors {
+                compatible = "zmk,behaviors";
+
+                scr: scr_noop {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&none>;
+                };
+
+                ql: ql_noop {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&none>;
+                };
+
+                qr: qr_noop {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&none>;
+                };
+
+                hlf: hlf {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&LCTRL>;
+                };
+
+                fll: fll {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&kp LC(LA(F))>;
+                };
+        };
+
         macros {
                 lwr_toggle_signal: lwr_toggle_signal {
                         compatible = "zmk,behavior-macro";
@@ -192,9 +236,9 @@
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         display-name = "Nav";
                         bindings = <
-   &kp TAB      &kp N1           &kp N2            &kp N3            &kp N4        &kp N5   &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &kp LCTRL    &none            &none             &none             &kp LCTRL     &kp LC(LA(F)) &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT    &none            &none             &none             &none         &none    &trans   &trans   &trans &trans    &trans &trans
+   &kp TAB      &kp N1           &kp N2            &kp N3            &kp N4        &kp N5        &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
+   &kp LCTRL    &scr             &ql               &qr               &hlf          &fll          &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+   &kp LSHFT    &none            &none             &none             &none         &none         &trans   &trans   &trans &trans    &trans &trans
                           	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
                 };

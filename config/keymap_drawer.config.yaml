@@ -1,5 +1,6 @@
 draw_config:
   dark_mode: auto
+  separate_combo_diagrams: true
   svg_extra_style: |
     :root {
       --finger-pinky: #ff595e;
