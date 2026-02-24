@@ -1,5 +1,14 @@
+parse_config:
+  raw_binding_map:
+    "&scr": "SCR"
+    "&ql": "QL"
+    "&qr": "QR"
+    "&hlf": "HLF"
+    "&fll": "FLL"
+
 draw_config:
   dark_mode: auto
+  separate_combo_diagrams: true
   svg_extra_style: |
     :root {
       --finger-pinky: #ff595e;

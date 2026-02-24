@@ -8,6 +8,50 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+        behaviors {
+                compatible = "zmk,behaviors";
+
+                scr: scr_noop {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&none>;
+                };
+
+                ql: ql_noop {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&none>;
+                };
+
+                qr: qr_noop {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&none>;
+                };
+
+                hlf: hlf {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&kp LCTRL>;
+                };
+
+                fll: fll {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&kp LC(LA(F))>;
+                };
+        };
+
         macros {
                 lwr_toggle_signal: lwr_toggle_signal {
                         compatible = "zmk,behavior-macro";
@@ -32,6 +76,142 @@
                 };
         };
 
+#ifndef KEYMAP_DRAWER
+        combos {
+                compatible = "zmk,combos";
+
+                /*
+                 * Nav layer (layer 1): left-row modifier chords with arrow keys.
+                 * Left-row indices on Nav second row: 12..16
+                 * Arrow indices: LEFT=18, DOWN=19, UP=20, RIGHT=21
+                 */
+                combo_nav_i0_left {
+                        timeout-ms = <500>;
+                        key-positions = <12 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LEFT)>;
+                };
+                combo_nav_i0_down {
+                        timeout-ms = <500>;
+                        key-positions = <12 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(DOWN)>;
+                };
+                combo_nav_i0_up {
+                        timeout-ms = <500>;
+                        key-positions = <12 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(UP)>;
+                };
+                combo_nav_i0_right {
+                        timeout-ms = <500>;
+                        key-positions = <12 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(RIGHT)>;
+                };
+
+                combo_nav_i1_left {
+                        timeout-ms = <500>;
+                        key-positions = <13 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LG(LS(LEFT))))>;
+                };
+                combo_nav_i1_down {
+                        timeout-ms = <500>;
+                        key-positions = <13 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LG(LS(DOWN))))>;
+                };
+                combo_nav_i1_up {
+                        timeout-ms = <500>;
+                        key-positions = <13 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LG(LS(UP))))>;
+                };
+                combo_nav_i1_right {
+                        timeout-ms = <500>;
+                        key-positions = <13 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LG(LS(RIGHT))))>;
+                };
+
+                combo_nav_i2_left {
+                        timeout-ms = <500>;
+                        key-positions = <14 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LS(LEFT)))>;
+                };
+                combo_nav_i2_down {
+                        timeout-ms = <500>;
+                        key-positions = <14 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LS(DOWN)))>;
+                };
+                combo_nav_i2_up {
+                        timeout-ms = <500>;
+                        key-positions = <14 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LS(UP)))>;
+                };
+                combo_nav_i2_right {
+                        timeout-ms = <500>;
+                        key-positions = <14 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LS(RIGHT)))>;
+                };
+
+                combo_nav_i3_left {
+                        timeout-ms = <500>;
+                        key-positions = <15 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(LEFT))>;
+                };
+                combo_nav_i3_down {
+                        timeout-ms = <500>;
+                        key-positions = <15 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(DOWN))>;
+                };
+                combo_nav_i3_up {
+                        timeout-ms = <500>;
+                        key-positions = <15 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(UP))>;
+                };
+                combo_nav_i3_right {
+                        timeout-ms = <500>;
+                        key-positions = <15 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(LA(RIGHT))>;
+                };
+
+                combo_nav_i4_left {
+                        timeout-ms = <500>;
+                        key-positions = <16 18>;
+                        layers = <1>;
+                        bindings = <&kp LC(LEFT)>;
+                };
+                combo_nav_i4_down {
+                        timeout-ms = <500>;
+                        key-positions = <16 19>;
+                        layers = <1>;
+                        bindings = <&kp LC(DOWN)>;
+                };
+                combo_nav_i4_up {
+                        timeout-ms = <500>;
+                        key-positions = <16 20>;
+                        layers = <1>;
+                        bindings = <&kp LC(UP)>;
+                };
+                combo_nav_i4_right {
+                        timeout-ms = <500>;
+                        key-positions = <16 21>;
+                        layers = <1>;
+                        bindings = <&kp LC(RIGHT)>;
+                };
+        };
+#endif
+
         keymap {
                 compatible = "zmk,keymap";
 
@@ -52,14 +232,14 @@
                 navigation_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | CTRL |     |     |     |     |     |   | LFT | DWN |  UP | RGT |     |      |
+// | CTRL |CASG | CAS | CA  | C   | CAF |   | LFT | DWN |  UP | RGT |     |      |
 // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
-                        display-name = "Navigation";
+                        display-name = "Nav";
                         bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &kp LCTRL &trans       &trans       &trans       &trans       &trans         &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
+   &kp TAB      &kp N1           &kp N2            &kp N3            &kp N4        &kp N5        &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
+   &kp LCTRL    &scr             &ql               &qr               &hlf          &fll          &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+   &kp LSHFT    &none            &none             &none             &none         &none         &trans   &trans   &trans &trans    &trans &trans
                           	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
                 };
@@ -70,9 +250,9 @@
 // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
-                        display-name = "Symbols";
+                        display-name = "Sym";
                         bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
+   &kp TAB   &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
    &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
    &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
                     	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT

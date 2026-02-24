@@ -15,7 +15,7 @@ permissions:
 
 env:
   KEYMAP_PATTERNS: "config/*.keymap"
-  KEYMAP_LAYERS: "Base Navigation Symbols"
+  KEYMAP_LAYERS: "Base Nav Sym"
   OUTPUT_FOLDER: "keymap-drawer"
 
 jobs:
@@ -58,7 +58,7 @@ jobs:
           for keymap_file in "${keymaps[@]}"; do
             keymap_name="$(basename "${keymap_file%.keymap}")"
             parsed_yaml="${OUTPUT_FOLDER}/${keymap_name}.yaml"
-            keymap parse -z "${keymap_file}" > "${parsed_yaml}"
+            keymap -c "${drawer_config}" parse -z "${keymap_file}" > "${parsed_yaml}"
 
             for layer in "${layers[@]}"; do
               layer_slug="$(echo "${layer}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd '[:alnum:]_-')"
