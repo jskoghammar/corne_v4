@@ -57,25 +57,37 @@
                 sv_aring: sv_aring {
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
-                        wait-ms = <0>;
-                        tap-ms = <0>;
-                        bindings = <&kp LG(LBKT)>;
+                        wait-ms = <20>;
+                        tap-ms = <20>;
+                        bindings
+                                = <&macro_press &kp LGUI>
+                                , <&macro_tap &kp LBKT>
+                                , <&macro_release &kp LGUI>
+                                ;
                 };
 
                 sv_adiaer: sv_adiaer {
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
-                        wait-ms = <0>;
-                        tap-ms = <0>;
-                        bindings = <&kp LG(SQT)>;
+                        wait-ms = <20>;
+                        tap-ms = <20>;
+                        bindings
+                                = <&macro_press &kp LGUI>
+                                , <&macro_tap &kp SQT>
+                                , <&macro_release &kp LGUI>
+                                ;
                 };
 
                 sv_odiaer: sv_odiaer {
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
-                        wait-ms = <0>;
-                        tap-ms = <0>;
-                        bindings = <&kp LG(SEMI)>;
+                        wait-ms = <20>;
+                        tap-ms = <20>;
+                        bindings
+                                = <&macro_press &kp LGUI>
+                                , <&macro_tap &kp SEMI>
+                                , <&macro_release &kp LGUI>
+                                ;
                 };
 
                 lwr_toggle_signal: lwr_toggle_signal {
