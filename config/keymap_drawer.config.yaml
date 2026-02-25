@@ -1,5 +1,4 @@
 parse_config:
-<<<<<<< HEAD
   zmk_keycode_map:
     EXCL: "!"
     DLLR: "$"
@@ -14,7 +13,6 @@ parse_config:
     LBKT: "["
     RBKT: "]"
     GRAVE: "`"
-    UNDER: "_"
     PLUS: "+"
     LBRC: "{"
     RBRC: "}"
@@ -23,39 +21,22 @@ parse_config:
     COMMA: ","
     DOT: "."
     FSLH: "/"
+    QMARK: "?"
   raw_binding_map:
     "&kp LS(SQT)": "@"
     "&kp NON_US_HASH": "#"
-    "&kp NON_US_BSLH": "\\"
-    "&kp LS(NON_US_BSLH)": "|"
-    "&kp LS(NON_US_HASH)": "~"
-=======
-  raw_binding_map:
-    "&kp LS(N1)": "!"
-    "&kp LS(SQT)": "@"
-    "&kp NON_US_HASH": "#"
-    "&kp LS(N4)": "$"
-    "&kp LS(N5)": "%"
-    "&kp LS(N6)": "^"
-    "&kp LS(N7)": "&"
-    "&kp LS(N8)": "*"
-    "&kp LS(N9)": "("
-    "&kp LS(N0)": ")"
     "&kp NON_US_BSLH": "\\"
     "&kp LS(N2)": '"'
-    "&kp LS(FSLH)": "?"
-    "&kp LS(EQUAL)": "+"
-    "&kp LS(LBKT)": "{"
-    "&kp LS(RBKT)": "}"
-    "&kp LS(NON_US_BSLH)": "|"
-    "&kp LS(NON_US_HASH)": "~"
+    "&kp PIPE2": "|"
+    "&kp TILDE2": "~"
     "&kp TAB": "↹"
     "&kp BSPC": "⌫"
->>>>>>> ede9d5f (NON_US)
     "&kp LEFT": "←"
     "&kp DOWN": "↓"
     "&kp UP": "↑"
     "&kp RIGHT": "→"
+    "&kp RET": "⏎"
+    "&kp SPACE": "␠"
     "&scr": "SCR"
     "&ql": "QL"
     "&qr": "QR"
