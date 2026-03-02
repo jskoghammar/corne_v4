@@ -8,3 +8,6 @@ The goal is to rely as little as possible on OS configurations.
 
 We do not modify generated files. 
 
+Since part of the build is committing generated files, a force push is often necessary. 
+
+
