@@ -116,6 +116,30 @@
                                 , <&sl_ignmods 2>
                                 ;
                 };
+
+                pipe_bslash_swap: pipe_bslash_swap {
+                        compatible = "zmk,behavior-mod-morph";
+                        #binding-cells = <0>;
+                        bindings = <&kp LS(NON_US_BSLH)>, <&kp NON_US_BSLH>;
+                        mods = <(MOD_LSFT|MOD_RSFT)>;
+                        keep-mods = <0>;
+                };
+
+                hrs: hrs {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&kp LS(LG(J))>;
+                };
+
+                hrm: hrm {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings = <&kp LS(LG(SPACE))>;
+                };
         };
 
 #ifndef KEYMAP_DRAWER
@@ -160,43 +184,43 @@
                 default_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+// | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+// | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
 //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
                         display-name = "Base";
                         bindings = <
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+   &kp LSHFT &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LCTRL &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
                   &kp LGUI &lwr_toggle_signal &kp SPACE   &kp RET &rse_oneshot_signal &kp RALT
                         >;
                 };
                 navigation_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | CTRL |CASG | CAS | CA  | C   | CAF |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+// | SHFT |CASG | CAS | CA  | C   | CAF |   | LFT | DWN |  UP | RGT |     |      |
+// | CTRL | ALT | HRS | HRM |     |     |   |     |     |     |     |     |      |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         display-name = "Nav";
                         bindings = <
    &kp TAB      &kp N1           &kp N2            &kp N3            &kp N4        &kp N5        &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &kp LCTRL    &scr             &ql               &qr               &hlf          &fll          &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT    &none            &none             &none             &none         &none         &trans   &trans   &trans &trans    &trans &trans
-                          	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+   &kp LSHFT    &scr             &ql               &qr               &hlf          &fll          &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+   &kp LCTRL    &kp LALT         &hrs              &hrm              &none         &none         &trans   &trans   &trans &trans    &trans &trans
+                          	        &kp LGUI     &kp RGUI       &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
                 };
 
                 symbol_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |  ?  |  "  |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+// | SHFT |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+// | CTRL |     |     |     |  ?  |  "  |   |  _  |  +  |  {  |  }  | "|" |  ~   |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
                         display-name = "Sym";
                         bindings = <
    &kp TAB   &kp EXCL   &kp LS(SQT) &kp NON_US_HASH &kp DLLR   &kp PRCNT    &kp CARET  &kp AMPS    &kp KP_MULTIPLY  &kp LPAR   &kp RPAR   &kp BSPC
-   &kp LCTRL &sv_aring  &sv_adiaer  &sv_odiaer      &trans     &trans       &kp MINUS  &kp EQUAL   &kp LBKT         &kp RBKT   &kp NON_US_BSLH &kp GRAVE
-   &kp LSHFT &trans     &trans      &trans           &kp QMARK  &kp LS(N2)   &kp UNDER    &kp PLUS      &kp LBRC       &kp RBRC      &kp PIPE2           &kp TILDE2
+   &kp LSHFT &sv_aring  &sv_adiaer  &sv_odiaer      &trans     &trans       &kp MINUS  &kp EQUAL   &kp LBKT         &kp RBKT   &kp FSLH         &kp GRAVE
+   &kp LCTRL &trans     &trans      &trans           &kp QMARK  &kp LS(N2)   &kp UNDER    &kp PLUS      &kp LBRC       &kp RBRC      &pipe_bslash_swap &kp TILDE2
                     	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };

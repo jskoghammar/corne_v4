@@ -1,3 +1,4 @@
 firmware*
 .zmk/
 .DS_Store
+.env
