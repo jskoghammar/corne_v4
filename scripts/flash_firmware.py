@@ -12,8 +12,15 @@ import time
 from pathlib import Path
 from typing import Any
 
+try:
+    from build_matrix import artifact_name, build_dir_name, load_build_matrix
+except ModuleNotFoundError:
+    from scripts.build_matrix import artifact_name, build_dir_name, load_build_matrix
+
 
 BOOT_VOLUME_RE = re.compile(r"^nice[ _-]?nano", re.IGNORECASE)
+DEFAULT_BOARD = "nice_nano_v2"
+FLASH_FILENAME = "zmk.uf2"
 
 
 def die(message: str) -> None:
@@ -237,25 +244,52 @@ def wait_for_side_mount(
     die(f"timed out waiting for mounted boot volume for {side_name}")
 
 
-def resolve_firmware(side: str, explicit_path: Path | None, root_dir: Path) -> Path:
+def resolve_firmware(
+    side: str,
+    explicit_path: Path | None,
+    root_dir: Path,
+    build_matrix_path: Path,
+    board: str,
+) -> Path:
     if explicit_path is not None:
         if not explicit_path.is_file():
             die(f"{side} firmware not found: {explicit_path}")
         return explicit_path
 
-    candidates = [
-        root_dir / ".zmk" / "zmk" / "build" / f"corne_{side}" / "zephyr" / "zmk.uf2",
-        root_dir / ".zmk" / "zmk" / "build" / f"corne_{side}" / "zephyr" / "zephyr.uf2",
-    ]
+    candidates: list[Path] = []
+
+    if build_matrix_path.is_file():
+        try:
+            matrix_entries = load_build_matrix(build_matrix_path)
+        except (FileNotFoundError, ValueError) as exc:
+            die(str(exc))
+
+        side_entries = [entry for entry in matrix_entries if entry.board == board and entry.side == side]
+        for entry in side_entries:
+            matrix_artifact = root_dir / "firmware" / f"{artifact_name(entry)}.uf2"
+            build_subdir = build_dir_name(entry)
+            build_uf2 = root_dir / ".zmk" / "zmk" / "build" / build_subdir / "zephyr" / "zmk.uf2"
+            candidates.extend([matrix_artifact, build_uf2])
+
+    candidates.extend(
+        [
+            root_dir / ".zmk" / "zmk" / "build" / f"corne_{side}" / "zephyr" / "zmk.uf2",
+            root_dir / ".zmk" / "zmk" / "build" / f"corne_{side}" / "zephyr" / "zephyr.uf2",
+        ]
+    )
+
     for candidate in candidates:
         if candidate.is_file():
             return candidate
 
-    die(f"could not find default {side} firmware UF2 (looked in {candidates[0].parent})")
+    if candidates:
+        tried = "\n  ".join(str(path) for path in candidates[:8])
+        die(f"could not find default {side} firmware UF2 (tried:\n  {tried}\n)")
+    die(f"could not find default {side} firmware UF2")
 
 
 def flash_file_to_mount(firmware: Path, mount_path: Path) -> None:
-    destination = mount_path / firmware.name
+    destination = mount_path / FLASH_FILENAME
     max_attempts = 3
 
     for attempt in range(1, max_attempts + 1):
@@ -266,7 +300,7 @@ def flash_file_to_mount(firmware: Path, mount_path: Path) -> None:
             time.sleep(0.2)
 
         try:
-            shutil.copy2(firmware, destination)
+            shutil.copyfile(firmware, destination)
             subprocess.run(["sync"], check=False)
             return
         except OSError as exc:
@@ -293,6 +327,8 @@ def main() -> int:
     parser.add_argument("--right-uf2", type=Path, help="Path to right UF2 (default: auto-detect from local build output)")
     parser.add_argument("--timeout", type=int, default=180, help="Seconds to wait per side (default: 180)")
     parser.add_argument("--no-unmount", action="store_true", help="Do not unmount volumes after copying")
+    parser.add_argument("--build-matrix", type=Path, help="Path to build matrix YAML (default: <repo>/build.yaml)")
+    parser.add_argument("--board", default=DEFAULT_BOARD, help=f"Board to select from build matrix (default: {DEFAULT_BOARD})")
     args = parser.parse_args()
 
     if sys.platform != "darwin":
@@ -301,6 +337,7 @@ def main() -> int:
         die(f"missing env file: {args.env_file}. Run scripts/identify_sides.py first.")
 
     root_dir = Path(__file__).resolve().parents[1]
+    build_matrix_path = args.build_matrix or (root_dir / "build.yaml")
     env_data = read_simple_yaml(args.env_file)
     primary = env_data.get("primary")
     secondary = env_data.get("secondary")
@@ -310,8 +347,8 @@ def main() -> int:
         if key not in primary or key not in secondary:
             die(f"{args.env_file} is missing required key '{key}' in primary/secondary")
 
-    left_firmware = resolve_firmware("left", args.left_uf2, root_dir)
-    right_firmware = resolve_firmware("right", args.right_uf2, root_dir)
+    left_firmware = resolve_firmware("left", args.left_uf2, root_dir, build_matrix_path, args.board)
+    right_firmware = resolve_firmware("right", args.right_uf2, root_dir, build_matrix_path, args.board)
 
     print(f"Using left UF2:  {left_firmware}")
     print(f"Using right UF2: {right_firmware}")
@@ -327,7 +364,7 @@ def main() -> int:
         input("Press Enter to start detection...")
         mount_path = wait_for_side_mount(side_name, side_identity, timeout_s=args.timeout)
         print(f"Detected {side_name} mount at {mount_path}")
-        print(f"Copying {firmware.name} -> {mount_path}")
+        print(f"Copying {firmware.name} -> {mount_path / FLASH_FILENAME}")
         flash_file_to_mount(firmware, mount_path)
         print(f"Flashed {side_name}.")
         if not args.no_unmount:
