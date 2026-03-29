@@ -151,11 +151,6 @@
                  * Left-row indices on Nav second row: 12..16
                  * Arrow indices: LEFT=18, DOWN=19, UP=20, RIGHT=21
                  */
-                NAV_COMBO(combo_nav_i0_left, 12, 18, &kp LC(LEFT))
-                NAV_COMBO(combo_nav_i0_down, 12, 19, &kp LC(DOWN))
-                NAV_COMBO(combo_nav_i0_up, 12, 20, &kp LC(UP))
-                NAV_COMBO(combo_nav_i0_right, 12, 21, &kp LC(RIGHT))
-
                 NAV_COMBO(combo_nav_i1_left, 13, 18, &kp LC(LA(LG(LS(LEFT)))))
                 NAV_COMBO(combo_nav_i1_down, 13, 19, &kp LC(LA(LG(LS(DOWN)))))
                 NAV_COMBO(combo_nav_i1_up, 13, 20, &kp LC(LA(LG(LS(UP)))))
