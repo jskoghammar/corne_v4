@@ -76,6 +76,14 @@
                         bindings = <&lwr_momentary_signal>, <&lwr_toggle_signal>;
                 };
 
+                rse: rse_mo_os {
+                        compatible = "zmk,behavior-hold-tap";
+                        #binding-cells = <2>;
+                        flavor = "hold-preferred";
+                        tapping-term-ms = <200>;
+                        bindings = <&rse_momentary_signal>, <&rse_oneshot_signal>;
+                };
+
                 sv_aring: sv_aring {
                         compatible = "zmk,behavior-mod-morph";
                         #binding-cells = <0>;
@@ -131,13 +139,29 @@
                 };
 
                 rse_oneshot_signal: rse_oneshot_signal {
-                        compatible = "zmk,behavior-macro";
-                        #binding-cells = <0>;
+                        compatible = "zmk,behavior-macro-one-param";
+                        #binding-cells = <1>;
                         wait-ms = <0>;
                         tap-ms = <0>;
                         bindings
                                 = <&kp F19>
-                                , <&sl_ignmods 2>
+                                , <&macro_param_1to1>
+                                , <&sl_ignmods MACRO_PLACEHOLDER>
+                                ;
+                };
+
+                rse_momentary_signal: rse_momentary_signal {
+                        compatible = "zmk,behavior-macro-one-param";
+                        #binding-cells = <1>;
+                        wait-ms = <0>;
+                        tap-ms = <0>;
+                        bindings
+                                = <&kp F19>
+                                , <&macro_param_1to1>
+                                , <&macro_press &mo MACRO_PLACEHOLDER>
+                                , <&macro_pause_for_release>
+                                , <&macro_param_1to1>
+                                , <&macro_release &mo MACRO_PLACEHOLDER>
                                 ;
                 };
 
@@ -211,7 +235,7 @@
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
    &kp LSHFT &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &mt LSHFT SQT
    &kp LCTRL &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &lwr 1 1          &kp SPACE   &kp RET &rse_oneshot_signal &kp RALT
+                  &kp LGUI &lwr 1 1          &kp SPACE   &kp RET &rse 2 2            &kp RALT
                         >;
                 };
                 navigation_layer {
@@ -223,7 +247,7 @@
                         display-name = "Nav";
                         bindings = <
    &kp TAB      &kp N1           &kp N2            &kp N3            &kp N4        &kp N5        &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &kp LSHFT    &scr             &ql               &qr               &hlf          &fll          &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
+   &kp LSHFT    &scr             &ql               &qr               &hlf          &fll          &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp HOME &kp END
    &kp LCTRL    &kp LALT         &hrs              &hrm              &none         &none         &trans   &trans   &trans &trans    &trans &trans
                           	        &kp LGUI     &trans         &kp SPACE      &kp RET  &trans   &kp RALT
                         >;
