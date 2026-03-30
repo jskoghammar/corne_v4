@@ -163,7 +163,7 @@
                                 , <&macro_pause_for_release>
                                 , <&macro_param_1to1>
                                 , <&macro_release &mo MACRO_PLACEHOLDER>
-                                , <&macro_tap &kp F21>
+                                , <&macro_tap &kp F20>
                                 ;
                 };
 
