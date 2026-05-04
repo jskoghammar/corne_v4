@@ -190,6 +190,63 @@
                         tap-ms = <0>;
                         bindings = <&kp LS(LG(SPACE))>;
                 };
+
+                tmux_left: tmux_left {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <20>;
+                        tap-ms = <20>;
+                        bindings = <&kp LC(B)>, <&kp LEFT>;
+                };
+
+                tmux_down: tmux_down {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <20>;
+                        tap-ms = <20>;
+                        bindings = <&kp LC(B)>, <&kp DOWN>;
+                };
+
+                tmux_up: tmux_up {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <20>;
+                        tap-ms = <20>;
+                        bindings = <&kp LC(B)>, <&kp UP>;
+                };
+
+                tmux_right: tmux_right {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <20>;
+                        tap-ms = <20>;
+                        bindings = <&kp LC(B)>, <&kp RIGHT>;
+                };
+
+                tmux_split_v: tmux_split_v {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <20>;
+                        tap-ms = <20>;
+                        bindings = <&kp LC(B)>, <&kp PRCNT>;
+                };
+
+                tmux_split_h: tmux_split_h {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        wait-ms = <20>;
+                        tap-ms = <20>;
+                        bindings = <&kp LC(B)>, <&kp LS(N2)>;
+                };
+        };
+
+        conditional_layers {
+                compatible = "zmk,conditional-layers";
+
+                tmux_layer_combo {
+                        if-layers = <1 2>;
+                        then-layer = <3>;
+                };
         };
 
 #ifndef KEYMAP_DRAWER
@@ -270,8 +327,19 @@
                         >;
                 };
 
-                extra_1 {
-                        status = "reserved";
+                tmux_layer {
+// -----------------------------------------------------------------------------------------
+// |      |     |     |     |     |     |   |     |     |     |     |     |      |
+// |      |     |     |     |     |     |   | PNL | PND | PNU | PNR |     |      |
+// |      |     |     |     | SP| | SP- |   |     |     |     |     |     |      |
+//                    |     |     |     |   |     |     |     |
+                        display-name = "Tmux";
+                        bindings = <
+   &none &none &none &none &none         &none         &none       &none       &none     &none        &none &none
+   &none &none &none &none &none         &none         &tmux_left  &tmux_down  &tmux_up  &tmux_right  &none &none
+   &none &none &none &none &tmux_split_v &tmux_split_h &none       &none       &none     &none        &none &none
+                           &none &none &none           &none &none &none
+                        >;
                 };
 
                 extra_2 {

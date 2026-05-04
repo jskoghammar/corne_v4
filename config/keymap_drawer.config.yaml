@@ -50,6 +50,12 @@ parse_config:
     "&qr": "QR"
     "&hlf": "HLF"
     "&fll": "FLL"
+    "&tmux_left": "PNL"
+    "&tmux_down": "PND"
+    "&tmux_up": "PNU"
+    "&tmux_right": "PNR"
+    "&tmux_split_v": "SP|"
+    "&tmux_split_h": "SP-"
     "&sv_aring": { t: "Å" }
     "&sv_adiaer": { t: "Ä" }
     "&sv_odiaer": { t: "Ö" }
