@@ -1,4 +1,5 @@
 In this project, the keys are referred to as row:column, 0 indexed from the top left. 
+Row 3 has only six keys, 0-5.
 
 The keyboard is used with a laptop that's using a UK layout. While we may add extra functionality, we need to not confuse the user when the default keyboard is used. 
 
@@ -9,5 +10,4 @@ The goal is to rely as little as possible on OS configurations.
 We do not modify generated files. 
 
 Since part of the build is committing generated files, a force push is often necessary. 
-
 

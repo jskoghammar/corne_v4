@@ -41,8 +41,16 @@ parse_config:
     "&kp RET": "⏎"
     "&kp SPACE": "␠"
     "&kp LALT": "ALT"
-    "&lwr": "LWR"
-    "&rse": "RSE"
+    "&cmd_sarm": {t: "CMD", h: "SYM"}
+    "&opt_narm": {t: "OPT", h: "NAV"}
+    "&mo LAYER_NAV": "NAV"
+    "&mo LAYER_SYM": "SYM"
+    "&mo LAYER_SYM_ARM": "SARM"
+    "&mo LAYER_NAV_ARM": "NARM"
+    "&mo 1": "NAV"
+    "&mo 2": "SYM"
+    "&mo 3": "SARM"
+    "&mo 4": "NARM"
     "&hrs": "HRS"
     "&hrm": "HRM"
     "&scr": "SCR"
