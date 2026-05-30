@@ -64,31 +64,6 @@
                         bindings = <&kp LC(LA(F))>;
                 };
 
-                sl_ignmods: sl_ignmods {
-                        compatible = "zmk,behavior-sticky-key";
-                        #binding-cells = <1>;
-                        release-after-ms = <1000>;
-                        bindings = <&mo>;
-                        quick-release;
-                        ignore-modifiers;
-                };
-
-                lwr: lwr_mo_tog {
-                        compatible = "zmk,behavior-hold-tap";
-                        #binding-cells = <2>;
-                        flavor = "hold-preferred";
-                        tapping-term-ms = <200>;
-                        bindings = <&lwr_momentary_signal>, <&lwr_toggle_signal>;
-                };
-
-                rse: rse_mo_os {
-                        compatible = "zmk,behavior-hold-tap";
-                        #binding-cells = <2>;
-                        flavor = "hold-preferred";
-                        tapping-term-ms = <200>;
-                        bindings = <&rse_momentary_signal>, <&rse_oneshot_signal>;
-                };
-
                 sv_aring: sv_aring {
                         compatible = "zmk,behavior-mod-morph";
                         #binding-cells = <0>;
@@ -115,27 +90,15 @@
         };
 
         macros {
-                lwr_toggle_signal: lwr_toggle_signal {
+                lwr: lwr_momentary_signal: lwr_momentary_signal {
                         compatible = "zmk,behavior-macro-one-param";
                         #binding-cells = <1>;
                         wait-ms = <0>;
                         tap-ms = <200>;
                         bindings
-                                = <&kp RCTRL>
-                                , <&macro_param_1to1>
-                                , <&tog MACRO_PLACEHOLDER>
-                                ;
-                };
-
-                lwr_momentary_signal: lwr_momentary_signal {
-                        compatible = "zmk,behavior-macro-one-param";
-                        #binding-cells = <1>;
-                        wait-ms = <0>;
-                        tap-ms = <200>;
-                        bindings
-                                = <&kp RCTRL>
-                                , <&macro_param_1to1>
+                                = <&macro_param_1to1>
                                 , <&macro_press &mo MACRO_PLACEHOLDER>
+                                , <&macro_tap &kp RCTRL>
                                 , <&macro_pause_for_release>
                                 , <&macro_param_1to1>
                                 , <&macro_release &mo MACRO_PLACEHOLDER>
@@ -143,27 +106,15 @@
                                 ;
                 };
 
-                rse_oneshot_signal: rse_oneshot_signal {
+                rse: rse_momentary_signal: rse_momentary_signal {
                         compatible = "zmk,behavior-macro-one-param";
                         #binding-cells = <1>;
                         wait-ms = <0>;
                         tap-ms = <200>;
                         bindings
-                                = <&kp RGUI>
-                                , <&macro_param_1to1>
-                                , <&sl_ignmods MACRO_PLACEHOLDER>
-                                ;
-                };
-
-                rse_momentary_signal: rse_momentary_signal {
-                        compatible = "zmk,behavior-macro-one-param";
-                        #binding-cells = <1>;
-                        wait-ms = <0>;
-                        tap-ms = <200>;
-                        bindings
-                                = <&kp RGUI>
-                                , <&macro_param_1to1>
+                                = <&macro_param_1to1>
                                 , <&macro_press &mo MACRO_PLACEHOLDER>
+                                , <&macro_tap &kp RGUI>
                                 , <&macro_pause_for_release>
                                 , <&macro_param_1to1>
                                 , <&macro_release &mo MACRO_PLACEHOLDER>
@@ -241,7 +192,7 @@
    &kp TAB   &kp Q        &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &kp BSPC
    &kp LSHFT &kp A        &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &kp RSHFT
    &kp LCTRL &kp Z        &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp MINUS
-                  &kp LGUI &lwr LAYER_NAV LAYER_NAV &kp SPACE   &kp RET &rse LAYER_SYM LAYER_SYM &kp ESC
+                  &kp LGUI &lwr LAYER_NAV           &kp SPACE   &kp RET &rse LAYER_SYM           &kp ESC
                         >;
                 };
 

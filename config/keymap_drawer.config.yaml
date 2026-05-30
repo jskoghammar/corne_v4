@@ -28,6 +28,11 @@ parse_config:
     "&kp NON_US_HASH": "#"
     "&kp NON_US_BSLH": "\\"
     "&kp LS(N2)": '"'
+    "&kp LS(N4)": "$"
+    "&kp LS(N9)": "("
+    "&kp LS(N0)": ")"
+    "&kp LS(HOME)": "SFT+HOME"
+    "&kp LS(END)": "SFT+END"
     "&kp TILDE2": "~"
     "&pipe_bslash_swap": "|"
     "&kp TAB": "↹"
@@ -41,10 +46,10 @@ parse_config:
     "&kp RET": "⏎"
     "&kp SPACE": "␠"
     "&kp LALT": "ALT"
-    "&lwr LAYER_NAV LAYER_NAV": {t: "NAV", h: "RCTRL"}
-    "&rse LAYER_SYM LAYER_SYM": {t: "SYM", h: "RGUI"}
-    "&lwr 2 2": {t: "NAV", h: "RCTRL"}
-    "&rse 1 1": {t: "SYM", h: "RGUI"}
+    "&lwr LAYER_NAV": {t: "NAV", h: "RCTRL"}
+    "&rse LAYER_SYM": {t: "SYM", h: "RGUI"}
+    "&lwr 2": {t: "NAV", h: "RCTRL"}
+    "&rse 1": {t: "SYM", h: "RGUI"}
     "&cmd_sarm": {t: "CMD", h: "SYM"}
     "&opt_narm": {t: "OPT", h: "NAV"}
     "&mo LAYER_SYM": "SYM"
