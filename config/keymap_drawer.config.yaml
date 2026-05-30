@@ -41,14 +41,18 @@ parse_config:
     "&kp RET": "⏎"
     "&kp SPACE": "␠"
     "&kp LALT": "ALT"
+    "&lwr LAYER_NAV LAYER_NAV": {t: "NAV", h: "RCTRL"}
+    "&rse LAYER_SYM LAYER_SYM": {t: "SYM", h: "RGUI"}
+    "&lwr 2 2": {t: "NAV", h: "RCTRL"}
+    "&rse 1 1": {t: "SYM", h: "RGUI"}
     "&cmd_sarm": {t: "CMD", h: "SYM"}
     "&opt_narm": {t: "OPT", h: "NAV"}
-    "&mo LAYER_NAV": "NAV"
     "&mo LAYER_SYM": "SYM"
+    "&mo LAYER_NAV": "NAV"
     "&mo LAYER_SYM_ARM": "SARM"
     "&mo LAYER_NAV_ARM": "NARM"
-    "&mo 1": "NAV"
-    "&mo 2": "SYM"
+    "&mo 1": "SYM"
+    "&mo 2": "NAV"
     "&mo 3": "SARM"
     "&mo 4": "NARM"
     "&hrs": "HRS"
