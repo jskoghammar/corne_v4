@@ -24,7 +24,7 @@ layers:
   - K
   - L
   - ;
-  - {t: '''', h: LSHFT}
+  - RSHFT
   - LCTRL
   - Z
   - X
@@ -36,182 +36,96 @@ layers:
   - ','
   - .
   - /
-  - ESC
-  - ''
-  - {t: CMD, h: SYM}
+  - '-'
+  - LGUI
+  - {t: NAV, h: RCTRL}
   - ␠
   - ⏎
-  - {t: OPT, h: NAV}
+  - {t: SYM, h: RGUI}
   - ESC
-  Nav:
+  Sym:
   - ↹
   - '1'
   - '2'
   - '3'
   - '4'
   - '5'
+  - $
+  - (
+  - )
+  - '['
+  - ']'
+  - ⌫
+  - LSHFT
   - '6'
   - '7'
   - '8'
   - '9'
   - '0'
+  - ''
+  - ''
+  - ''
+  - ''''
+  - '#'
+  - ''
+  - LCTRL
+  - ALT
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - LGUI
+  - {t: ▽, type: trans}
+  - ␠
+  - ⏎
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  Nav:
+  - ↹
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - ⌫
   - LSHFT
-  - SCR
+  - HLF
   - QL
   - QR
-  - HLF
   - FLL
+  - SCR
   - ←
   - ↓
   - ↑
   - →
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - ''
+  - ''
   - LCTRL
-  - ALT
+  - {t: ▽, type: trans}
   - HRS
   - HRM
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - SFT+HOME
+  - SFT+END
+  - SCR
   - ''
-  - ''
-  - HOME
-  - END
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - LGUI
-  - {t: ▽, type: trans}
-  - ␠
-  - ⏎
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  Sym:
-  - ↹
-  - '!'
-  - '@'
-  - '#'
-  - $
-  - '%'
-  - ^
-  - '&'
-  - '*'
-  - (
-  - )
-  - ⌫
-  - LSHFT
-  - Å
-  - Ä
-  - Ö
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - '-'
-  - '='
-  - '['
-  - ']'
-  - /
-  - '`'
-  - LCTRL
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - '?'
-  - '"'
-  - _
-  - +
-  - '{'
-  - '}'
   - '|'
-  - '~'
+  - ''
   - LGUI
-  - {t: ▽, type: trans}
+  - ALT
   - ␠
   - ⏎
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  Sym Arm:
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - SYM
-  - {t: ▽, type: trans}
-  Nav Arm:
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - NAV
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
