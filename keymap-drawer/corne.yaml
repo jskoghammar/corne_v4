@@ -67,7 +67,7 @@ layers:
   - ''
   - ''''
   - '#'
-  - ''
+  - RSHFT
   - LCTRL
   - ALT
   - ''
@@ -88,8 +88,8 @@ layers:
   - {t: ▽, type: trans}
   Nav:
   - ↹
-  - ''
-  - ''
+  - BT1
+  - BT2
   - ''
   - ''
   - ''
@@ -110,7 +110,7 @@ layers:
   - ↑
   - →
   - ''
-  - ''
+  - RSHFT
   - LCTRL
   - {t: ▽, type: trans}
   - HRS
