@@ -46,6 +46,8 @@ parse_config:
     "&kp RET": "⏎"
     "&kp SPACE": "␠"
     "&kp LALT": "ALT"
+    "&bt BT_SEL 0": "BT1"
+    "&bt BT_SEL 1": "BT2"
     "&lwr LAYER_NAV": {t: "NAV", h: "RCTRL"}
     "&rse LAYER_SYM": {t: "SYM", h: "RGUI"}
     "&lwr 2": {t: "NAV", h: "RCTRL"}
