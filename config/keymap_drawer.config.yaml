@@ -25,10 +25,15 @@ parse_config:
     QMARK: "?"
   raw_binding_map:
     "&kp LS(SQT)": "@"
+    "&kp LS(N1)": "!"
     "&kp NON_US_HASH": "#"
     "&kp NON_US_BSLH": "\\"
     "&kp LS(N2)": '"'
     "&kp LS(N4)": "$"
+    "&kp LS(N5)": "%"
+    "&kp LS(N6)": "^"
+    "&kp LS(N7)": "&"
+    "&kp LS(N8)": "*"
     "&kp LS(N9)": "("
     "&kp LS(N0)": ")"
     "&kp LS(HOME)": "Home"
@@ -48,6 +53,8 @@ parse_config:
     "&kp LALT": "ALT"
     "&bt BT_SEL 0": "BT1"
     "&bt BT_SEL 1": "BT2"
+    "&comma_excl": {t: ",", s: "!"}
+    "&dot_dquote": {t: ".", s: '"'}
     "&lwr LAYER_NAV": {t: "NAV", h: "RCTRL"}
     "&rse LAYER_SYM": {t: "SYM", h: "RGUI"}
     "&lwr 2": {t: "NAV", h: "RCTRL"}
