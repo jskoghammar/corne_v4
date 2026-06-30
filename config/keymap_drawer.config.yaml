@@ -55,6 +55,7 @@ parse_config:
     "&bt BT_SEL 1": "BT2"
     "&comma_excl": {t: ",", s: "!"}
     "&dot_dquote": {t: ".", s: '"'}
+    "&mt RSHFT SQT": {t: "'", h: "RSHFT"}
     "&lwr LAYER_NAV": {t: "NAV", h: "RCTRL"}
     "&rse LAYER_SYM": {t: "SYM", h: "RGUI"}
     "&lwr 2": {t: "NAV", h: "RCTRL"}
