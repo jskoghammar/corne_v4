@@ -38,10 +38,10 @@ layers:
   - /
   - '-'
   - LGUI
-  - {t: NAV, h: RCTRL}
+  - {t: NAV, h: F15}
   - ␠
   - ⏎
-  - {t: SYM, h: RGUI}
+  - {t: SYM, h: F14}
   - ESC
   Sym:
   - ↹
@@ -55,19 +55,19 @@ layers:
   - )
   - '['
   - ']'
-  - ⌫
+  - {t: å, s: Å}
   - LSHFT
   - '6'
   - '7'
   - '8'
   - '9'
   - '0'
-  - ''
-  - ''
+  - '='
+  - +
   - '%'
   - ''''
-  - '#'
-  - RSHFT
+  - {t: ö, s: Ö}
+  - {t: ä, s: Ä}
   - LCTRL
   - ALT
   - ''
@@ -77,9 +77,9 @@ layers:
   - ^
   - '&'
   - '*'
-  - ''
-  - ''
-  - ''
+  - '`'
+  - '#'
+  - ⌫
   - LGUI
   - {t: ▽, type: trans}
   - ␠
@@ -88,23 +88,23 @@ layers:
   - {t: ▽, type: trans}
   Nav:
   - ↹
-  - BT1
-  - BT2
+  - {t: BT, h: F16}
   - ''
   - ''
   - ''
   - ''
-  - ''
+  - U
+  - I
   - ''
   - ''
   - ''
   - ⌫
   - LSHFT
-  - HLF
-  - QL
-  - QR
-  - FLL
-  - SCR
+  - CTR
+  - MAX
+  - {t: DSP, h: ⌃⌥⌘}
+  - {t: HLF, h: ⌃⌥}
+  - ''
   - ←
   - ↓
   - ↑
@@ -117,15 +117,58 @@ layers:
   - HRM
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - J
+  - K
   - Home
   - End
-  - SCR
-  - ''
   - '|'
   - ''
   - LGUI
   - ALT
   - ␠
   - ⏎
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  BT:
+  - ↹
+  - BT 1
+  - BT 2
+  - BT 3
+  - BT 4
+  - BT 5
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ⌫
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
