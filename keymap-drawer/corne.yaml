@@ -24,7 +24,7 @@ layers:
   - K
   - L
   - ;
-  - RSHFT
+  - {t: '''', h: RSHFT}
   - LCTRL
   - Z
   - X
@@ -33,8 +33,8 @@ layers:
   - B
   - N
   - M
-  - ','
-  - .
+  - {t: ',', s: '!'}
+  - {t: ., s: '"'}
   - /
   - '-'
   - LGUI
@@ -50,9 +50,9 @@ layers:
   - '3'
   - '4'
   - '5'
-  - Sft+4
-  - Sft+9
-  - Sft+0
+  - $
+  - (
+  - )
   - '['
   - ']'
   - ⌫
@@ -64,19 +64,19 @@ layers:
   - '0'
   - ''
   - ''
-  - ''
+  - '%'
   - ''''
   - '#'
-  - ''
+  - RSHFT
   - LCTRL
   - ALT
   - ''
   - ''
   - ''
   - ''
-  - ''
-  - ''
-  - ''
+  - ^
+  - '&'
+  - '*'
   - ''
   - ''
   - ''
@@ -88,8 +88,8 @@ layers:
   - {t: ▽, type: trans}
   Nav:
   - ↹
-  - ''
-  - ''
+  - BT1
+  - BT2
   - ''
   - ''
   - ''
@@ -110,15 +110,15 @@ layers:
   - ↑
   - →
   - ''
-  - ''
+  - RSHFT
   - LCTRL
   - {t: ▽, type: trans}
   - HRS
   - HRM
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Sft+HOME
-  - Sft+END
+  - Home
+  - End
   - SCR
   - ''
   - '|'
