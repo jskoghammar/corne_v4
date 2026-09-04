@@ -53,22 +53,26 @@ parse_config:
     "&kp LALT": "ALT"
     "&comma_excl": {t: ",", s: "!"}
     "&dot_dquote": {t: ".", s: '"'}
-    "&mt RSHFT SQT": {t: "'", h: "RSHFT"}
-    "&lwr LAYER_NAV": {t: "NAV", h: "RCTRL"}
-    "&rse LAYER_SYM": {t: "SYM", h: "RGUI"}
-    "&lwr 2": {t: "NAV", h: "RCTRL"}
-    "&rse 1": {t: "SYM", h: "RGUI"}
-    "&cmd_sarm": {t: "CMD", h: "SYM"}
-    "&opt_narm": {t: "OPT", h: "NAV"}
-    "&mo LAYER_SYM": "SYM"
-    "&mo LAYER_NAV": "NAV"
-    "&mo LAYER_BT": "BT"
-    "&mo LAYER_SYM_ARM": "SARM"
-    "&mo LAYER_NAV_ARM": "NARM"
-    "&mo 1": "SYM"
-    "&mo 2": "NAV"
-    "&mo 3": "BT"
-    "&mo 4": "NARM"
+
+    # Apostrophe on the right-hand shift key.
+    "&qshft RSHFT SQT": {t: "'", h: "RSHFT"}
+
+    # Layer holds. Both the symbolic and preprocessed forms, since the drawer
+    # sees whichever survives the C preprocessor.
+    "&lyr LAYER_NAV SIG_NAV": {t: "NAV", h: "F15"}
+    "&lyr LAYER_SYM SIG_SYM": {t: "SYM", h: "F14"}
+    "&lyr LAYER_BT SIG_BT": {t: "BT", h: "F16"}
+    "&lyr 2 F15": {t: "NAV", h: "F15"}
+    "&lyr 1 F14": {t: "SYM", h: "F14"}
+    "&lyr 3 F16": {t: "BT", h: "F16"}
+
+    # Window management. Held modifiers, not tiers: these emit exactly the
+    # chords Rectangle ships with by default.
+    "&kp LC(LALT)": {t: "HLF", h: "⌃⌥"}
+    "&kp LC(LA(LGUI))": {t: "DSP", h: "⌃⌥⌘"}
+    "&kp LC(LA(RET))": "MAX"
+    "&kp LC(LA(C))": "CTR"
+
     "&bt BT_SEL 0": "BT 1"
     "&bt BT_SEL 1": "BT 2"
     "&bt BT_SEL 2": "BT 3"
@@ -76,14 +80,9 @@ parse_config:
     "&bt BT_SEL 4": "BT 5"
     "&hrs": "HRS"
     "&hrm": "HRM"
-    "&scr": "SCR"
-    "&ql": "QL"
-    "&qr": "QR"
-    "&hlf": "HLF"
-    "&fll": "FLL"
-    "&sv_aring": { t: "Å" }
-    "&sv_adiaer": { t: "Ä" }
-    "&sv_odiaer": { t: "Ö" }
+    "&sv_aring": {t: "å", s: "Å"}
+    "&sv_adiaer": {t: "ä", s: "Ä"}
+    "&sv_odiaer": {t: "ö", s: "Ö"}
 
 draw_config:
   dark_mode: auto

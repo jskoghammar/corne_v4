@@ -4,3 +4,4 @@ firmware*
 **/__pycache__/
 .env
 .flash-state.json
+.scratch/

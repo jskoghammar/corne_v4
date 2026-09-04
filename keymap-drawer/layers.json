@@ -1,0 +1,23 @@
+{
+  "commit": "ca029dd92b97cd600d01d48f4d1fcd0a17ce9eda",
+  "layers": [
+    {
+      "index": 1,
+      "name": "Sym",
+      "svg": "img/corne-sym.svg",
+      "signal": "F14"
+    },
+    {
+      "index": 2,
+      "name": "Nav",
+      "svg": "img/corne-nav.svg",
+      "signal": "F15"
+    },
+    {
+      "index": 3,
+      "name": "BT",
+      "svg": "img/corne-bt.svg",
+      "signal": "F16"
+    }
+  ]
+}
