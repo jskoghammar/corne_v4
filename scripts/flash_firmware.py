@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import argparse
 import errno
+import hashlib
+import json
 import os
 import re
 import shutil
@@ -21,6 +23,7 @@ except ModuleNotFoundError:
 BOOT_VOLUME_RE = re.compile(r"^nice[ _-]?nano", re.IGNORECASE)
 DEFAULT_BOARD = "nice_nano_v2"
 FLASH_FILENAME = "zmk.uf2"
+FLASH_STATE_FILENAME = ".flash-state.json"
 
 
 def die(message: str) -> None:
@@ -315,6 +318,66 @@ def unmount_volume(mount_path: Path) -> None:
     subprocess.run(["diskutil", "unmount", str(mount_path)], text=True, capture_output=True, check=False)
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def read_flash_state(path: Path) -> dict[str, Any]:
+    """Return the recorded per-side flash state, or {} if absent/unreadable.
+
+    A missing or corrupt state file is not an error: it just means we cannot
+    prove a side is up to date, so every side gets flashed.
+    """
+    if not path.is_file():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def write_flash_state(path: Path, state: dict[str, Any]) -> None:
+    path.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def plan_sides(
+    candidates: list[tuple[str, str, Any, Path, str]],
+    state: dict[str, Any],
+    scope: str,
+) -> tuple[list[tuple[str, str, Any, Path, str]], list[tuple[str, str]]]:
+    """Split candidate sides into (to_flash, skipped).
+
+    A side is skipped only when scope is "auto" AND we have a recorded digest
+    for it AND that digest matches the image about to be flashed AND that
+    image is the same artifact the digest was recorded against. Anything
+    else -- no state, unreadable state, a changed image, a different build
+    variant, scope="both" -- falls through to flashing, so uncertainty always
+    costs a flash rather than leaving a half stale.
+
+    The artifact-name check matters because resolve_firmware() falls back
+    through several candidate paths: a failed rebuild can leave a previous
+    variant's UF2 in place, and matching on the digest alone would treat that
+    stale file as proof the side is current.
+    """
+    to_flash: list[tuple[str, str, Any, Path, str]] = []
+    skipped: list[tuple[str, str]] = []
+    for candidate in candidates:
+        side_name, side_key, _identity, _firmware, digest = candidate
+        previous = state.get(side_key) or {}
+        same_image = previous.get("uf2_sha256") == digest
+        same_artifact = previous.get("firmware") == _firmware.name
+        if scope == "auto" and same_image and same_artifact:
+            skipped.append((side_name, previous.get("flashed_at", "an earlier run")))
+        else:
+            to_flash.append(candidate)
+    return to_flash, skipped
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Flash built Corne UF2 files to primary/secondary sides using saved USB identity")
     parser.add_argument(
@@ -325,6 +388,20 @@ def main() -> int:
     )
     parser.add_argument("--left-uf2", type=Path, help="Path to left UF2 (default: auto-detect from local build output)")
     parser.add_argument("--right-uf2", type=Path, help="Path to right UF2 (default: auto-detect from local build output)")
+    parser.add_argument(
+        "--state-file",
+        type=Path,
+        help=f"Path to the flash state file (default: <repo>/{FLASH_STATE_FILENAME})",
+    )
+    parser.add_argument(
+        "--scope",
+        choices=("auto", "both"),
+        default="auto",
+        help=(
+            "auto (default): flash only sides whose UF2 differs from the one last flashed to them. "
+            "both: flash both sides regardless"
+        ),
+    )
     parser.add_argument("--timeout", type=int, default=180, help="Seconds to wait per side (default: 180)")
     parser.add_argument("--no-unmount", action="store_true", help="Do not unmount volumes after copying")
     parser.add_argument("--build-matrix", type=Path, help="Path to build matrix YAML (default: <repo>/build.yaml)")
@@ -353,12 +430,29 @@ def main() -> int:
     print(f"Using left UF2:  {left_firmware}")
     print(f"Using right UF2: {right_firmware}")
 
-    plan = [
-        ("primary (left)", primary, left_firmware),
-        ("secondary (right)", secondary, right_firmware),
-    ]
+    state_path = args.state_file or (root_dir / FLASH_STATE_FILENAME)
+    state = read_flash_state(state_path)
 
-    for side_name, side_identity, firmware in plan:
+    # A side only needs flashing if its image actually differs from the one
+    # already on it. This is exact rather than heuristic: the peripheral is
+    # built with CONFIG_ZMK_SPLIT_ROLE_CENTRAL unset, so the keymap is compiled
+    # out of it entirely and keymap-only edits leave its UF2 byte-identical.
+    candidates = [
+        ("primary (left)", "left", primary, left_firmware, sha256_file(left_firmware)),
+        ("secondary (right)", "right", secondary, right_firmware, sha256_file(right_firmware)),
+    ]
+    plan, skipped = plan_sides(candidates, state, args.scope)
+
+    for side_name, flashed_at in skipped:
+        print(f"Skipping {side_name}: identical to what was flashed on {flashed_at}.")
+    if skipped:
+        print("Pass --scope both to flash every side anyway.")
+
+    if not plan:
+        print("\nNothing to do: both sides already carry this firmware.")
+        return 0
+
+    for side_name, side_key, side_identity, firmware, digest in plan:
         print()
         print(f"Put {side_name} into bootloader mode so NICENANO mounts.")
         input("Press Enter to start detection...")
@@ -370,7 +464,16 @@ def main() -> int:
         if not args.no_unmount:
             unmount_volume(mount_path)
 
-    print("\nDone. Both sides flashed.")
+        # Record after each side so interrupting midway keeps the finished
+        # side marked as up to date.
+        state[side_key] = {
+            "uf2_sha256": digest,
+            "firmware": firmware.name,
+            "flashed_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+        }
+        write_flash_state(state_path, state)
+
+    print(f"\nDone. Flashed: {', '.join(name for name, _, _, _, _ in plan)}.")
     return 0
 
 

@@ -24,7 +24,7 @@ layers:
   - K
   - L
   - ;
-  - RSHFT
+  - {t: '''', h: RSHFT}
   - LCTRL
   - Z
   - X
@@ -33,15 +33,15 @@ layers:
   - B
   - N
   - M
-  - ','
-  - .
+  - {t: ',', s: '!'}
+  - {t: ., s: '"'}
   - /
   - '-'
   - LGUI
-  - {t: NAV, h: RCTRL}
+  - {t: NAV, h: F15}
   - ␠
   - ⏎
-  - {t: SYM, h: RGUI}
+  - {t: SYM, h: F14}
   - ESC
   Sym:
   - ↹
@@ -50,36 +50,36 @@ layers:
   - '3'
   - '4'
   - '5'
-  - Sft+4
-  - Sft+9
-  - Sft+0
+  - $
+  - (
+  - )
   - '['
   - ']'
-  - ⌫
+  - {t: å, s: Å}
   - LSHFT
   - '6'
   - '7'
   - '8'
   - '9'
   - '0'
-  - ''
-  - ''
-  - ''
+  - '='
+  - +
+  - '%'
   - ''''
-  - '#'
-  - ''
+  - {t: ö, s: Ö}
+  - {t: ä, s: Ä}
   - LCTRL
   - ALT
   - ''
   - ''
   - ''
   - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - ^
+  - '&'
+  - '*'
+  - '`'
+  - '#'
+  - ⌫
   - LGUI
   - {t: ▽, type: trans}
   - ␠
@@ -88,44 +88,87 @@ layers:
   - {t: ▽, type: trans}
   Nav:
   - ↹
+  - {t: BT, h: F16}
   - ''
   - ''
   - ''
   - ''
-  - ''
-  - ''
-  - ''
+  - U
+  - I
   - ''
   - ''
   - ''
   - ⌫
   - LSHFT
-  - HLF
-  - QL
-  - QR
-  - FLL
-  - SCR
+  - CTR
+  - MAX
+  - {t: DSP, h: ⌃⌥⌘}
+  - {t: HLF, h: ⌃⌥}
+  - ''
   - ←
   - ↓
   - ↑
   - →
   - ''
-  - ''
+  - RSHFT
   - LCTRL
   - {t: ▽, type: trans}
   - HRS
   - HRM
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Sft+HOME
-  - Sft+END
-  - SCR
-  - ''
+  - J
+  - K
+  - Home
+  - End
   - '|'
   - ''
   - LGUI
   - ALT
   - ␠
   - ⏎
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  BT:
+  - ↹
+  - BT 1
+  - BT 2
+  - BT 3
+  - BT 4
+  - BT 5
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ⌫
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
