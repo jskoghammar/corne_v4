@@ -57,11 +57,17 @@
                         bindings = <&kp LCTRL>;
                 };
 
+                /*
+                 * tap-ms must stay non-zero on macros that actually emit a key.
+                 * The behavior queue only yields between press and release when
+                 * the wait is > 0 (behavior_queue.c), so a zero-length tap is
+                 * coalesced away and never reaches the host.
+                 */
                 fll: fll {
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
                         wait-ms = <0>;
-                        tap-ms = <0>;
+                        tap-ms = <30>;
                         bindings = <&kp LC(LA(F))>;
                 };
 
@@ -151,7 +157,7 @@
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
                         wait-ms = <0>;
-                        tap-ms = <0>;
+                        tap-ms = <30>;
                         bindings = <&kp LS(LG(J))>;
                 };
 
@@ -159,7 +165,7 @@
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
                         wait-ms = <0>;
-                        tap-ms = <0>;
+                        tap-ms = <30>;
                         bindings = <&kp LA(SPACE)>;
                 };
         };
