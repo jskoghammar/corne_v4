@@ -15,7 +15,7 @@ permissions:
 
 env:
   KEYMAP_PATTERNS: "config/*.keymap"
-  KEYMAP_LAYERS: "Base Sym Nav"
+  KEYMAP_LAYERS: "Base Sym Nav BT"
   OUTPUT_FOLDER: "keymap-drawer"
 
 jobs:

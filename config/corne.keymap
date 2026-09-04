@@ -11,6 +11,7 @@
 #define LAYER_BASE 0
 #define LAYER_SYM 1
 #define LAYER_NAV 2
+#define LAYER_BT 3
 
 #define NAV_COMBO(name, key_a, key_b, behavior) \
         name { \
@@ -191,6 +192,18 @@
                 NAV_COMBO(combo_nav_i4_down, 16, 19, &kp LC(DOWN))
                 NAV_COMBO(combo_nav_i4_up, 16, 20, &kp LC(UP))
                 NAV_COMBO(combo_nav_i4_right, 16, 21, &kp LC(RIGHT))
+
+                /*
+                 * Bluetooth layer: hold the left thumb cluster (3:0-1-2)
+                 * from the base layer to access BT device selection.
+                 */
+                combo_bt_layer {
+                        timeout-ms = <500>;
+                        key-positions = <36 37 38>;
+                        layers = <LAYER_BASE>;
+                        bindings = <&mo LAYER_BT>;
+                        slow-release;
+                };
         };
 #endif
 
@@ -229,7 +242,7 @@
 
                 nav_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB | BT1 | BT2 |     |     |     |   |     |     |     |     |     | BKSP |
+// |  TAB | BT 1 | BT 2 |     |     |     |   |     |     |     |     |     | BKSP |
 // | SHFT | HLF | QL  | QR  | FLL | SCR |   | LFT | DWN |  UP | RGT |     | SHFT |
 // | CTRL |     | HRS | HRM |     |     |   |S-HOM|S-END| SCR |     | "|" |      |
 //                    | GUI | ALT | SPC |   | ENT |     |     |
@@ -239,6 +252,21 @@
    &kp LSHFT &hlf         &ql   &qr   &fll   &scr    &kp LEFT    &kp DOWN    &kp UP &kp RIGHT &none             &kp RSHFT
    &kp LCTRL &trans       &hrs  &hrm  &trans &trans  &kp LS(HOME) &kp LS(END) &scr  &none     &pipe_bslash_swap &none
                   &kp LGUI &kp LALT                     &kp SPACE   &kp RET &trans         &trans
+                        >;
+                };
+
+                bt_layer {
+// -----------------------------------------------------------------------------------------
+// |  TAB | BT 1 | BT 2 | BT 3 | BT 4 | BT 5 |   |     |     |     |     |     | BKSP |
+// |      |      |      |      |      |      |   |     |     |     |     |     |      |
+// |      |      |      |      |      |      |   |     |     |     |     |     |      |
+//                    |     |     |     |   |     |     |     |
+                        display-name = "BT";
+                        bindings = <
+   &kp TAB   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &none &none &none &none &none &kp BSPC
+   &none     &none        &none        &none        &none        &none          &none &none &none &none &none &none
+   &none     &none        &none        &none        &none        &none          &none &none &none &none &none &none
+                  &trans   &trans                                &trans      &trans  &trans         &trans
                         >;
                 };
         };

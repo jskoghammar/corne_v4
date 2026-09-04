@@ -51,8 +51,6 @@ parse_config:
     "&kp RET": "⏎"
     "&kp SPACE": "␠"
     "&kp LALT": "ALT"
-    "&bt BT_SEL 0": "BT1"
-    "&bt BT_SEL 1": "BT2"
     "&comma_excl": {t: ",", s: "!"}
     "&dot_dquote": {t: ".", s: '"'}
     "&mt RSHFT SQT": {t: "'", h: "RSHFT"}
@@ -64,12 +62,18 @@ parse_config:
     "&opt_narm": {t: "OPT", h: "NAV"}
     "&mo LAYER_SYM": "SYM"
     "&mo LAYER_NAV": "NAV"
+    "&mo LAYER_BT": "BT"
     "&mo LAYER_SYM_ARM": "SARM"
     "&mo LAYER_NAV_ARM": "NARM"
     "&mo 1": "SYM"
     "&mo 2": "NAV"
-    "&mo 3": "SARM"
+    "&mo 3": "BT"
     "&mo 4": "NARM"
+    "&bt BT_SEL 0": "BT 1"
+    "&bt BT_SEL 1": "BT 2"
+    "&bt BT_SEL 2": "BT 3"
+    "&bt BT_SEL 3": "BT 4"
+    "&bt BT_SEL 4": "BT 5"
     "&hrs": "HRS"
     "&hrm": "HRM"
     "&scr": "SCR"
