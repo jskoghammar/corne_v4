@@ -51,8 +51,8 @@ def split(plan, skipped):
 def main() -> int:
     flashed_at = "2026-09-04T08:30:00"
     state = {
-        "left": {"uf2_sha256": LEFT_OLD, "flashed_at": flashed_at},
-        "right": {"uf2_sha256": RIGHT, "flashed_at": flashed_at},
+        "left": {"uf2_sha256": LEFT_OLD, "firmware": "l.uf2", "flashed_at": flashed_at},
+        "right": {"uf2_sha256": RIGHT, "firmware": "r.uf2", "flashed_at": flashed_at},
     }
 
     check(
@@ -81,10 +81,23 @@ def main() -> int:
         (BOTH, []),
     )
 
+    # A stale artifact from a failed rebuild can carry a digest we recorded
+    # against a different build variant; the artifact name has to match too.
+    variant_state = {
+        "left": {"uf2_sha256": LEFT_OLD, "firmware": "corne_left-plain.uf2", "flashed_at": flashed_at},
+        "right": {"uf2_sha256": RIGHT, "firmware": "corne_right-plain.uf2", "flashed_at": flashed_at},
+    }
+    check(
+        "same digest but different variant -> flash both",
+        split(*ff.plan_sides(candidates(LEFT_OLD, RIGHT), variant_state, "auto")),
+        (BOTH, []),
+    )
+
     for label, bad in (
         ("null entry", None),
         ("missing digest", {"flashed_at": "x"}),
         ("wrong digest type", {"uf2_sha256": 123}),
+        ("missing artifact name", {"uf2_sha256": LEFT_OLD}),
     ):
         check(
             f"malformed state ({label}) -> flash both",
@@ -94,7 +107,9 @@ def main() -> int:
 
     _, skipped = ff.plan_sides(candidates(LEFT_NEW, RIGHT), state, "auto")
     check("skip reason reports when it was flashed", skipped[0][1], flashed_at)
-    _, skipped = ff.plan_sides(candidates(LEFT_NEW, RIGHT), {"right": {"uf2_sha256": RIGHT}}, "auto")
+    _, skipped = ff.plan_sides(
+        candidates(LEFT_NEW, RIGHT), {"right": {"uf2_sha256": RIGHT, "firmware": "r.uf2"}}, "auto"
+    )
     check("skip reason falls back when timestamp missing", skipped[0][1], "an earlier run")
 
     with tempfile.TemporaryDirectory() as raw:

@@ -353,17 +353,25 @@ def plan_sides(
     """Split candidate sides into (to_flash, skipped).
 
     A side is skipped only when scope is "auto" AND we have a recorded digest
-    for it AND that digest matches the image about to be flashed. Anything
-    else -- no state, unreadable state, a changed image, scope="both" -- falls
-    through to flashing, so uncertainty always costs a flash rather than
-    leaving a half stale.
+    for it AND that digest matches the image about to be flashed AND that
+    image is the same artifact the digest was recorded against. Anything
+    else -- no state, unreadable state, a changed image, a different build
+    variant, scope="both" -- falls through to flashing, so uncertainty always
+    costs a flash rather than leaving a half stale.
+
+    The artifact-name check matters because resolve_firmware() falls back
+    through several candidate paths: a failed rebuild can leave a previous
+    variant's UF2 in place, and matching on the digest alone would treat that
+    stale file as proof the side is current.
     """
     to_flash: list[tuple[str, str, Any, Path, str]] = []
     skipped: list[tuple[str, str]] = []
     for candidate in candidates:
         side_name, side_key, _identity, _firmware, digest = candidate
         previous = state.get(side_key) or {}
-        if scope == "auto" and previous.get("uf2_sha256") == digest:
+        same_image = previous.get("uf2_sha256") == digest
+        same_artifact = previous.get("firmware") == _firmware.name
+        if scope == "auto" and same_image and same_artifact:
             skipped.append((side_name, previous.get("flashed_at", "an earlier run")))
         else:
             to_flash.append(candidate)
