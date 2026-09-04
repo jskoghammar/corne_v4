@@ -1,6 +1,12 @@
 {
-  "commit": "ca029dd92b97cd600d01d48f4d1fcd0a17ce9eda",
+  "commit": "e916b4e529a244eaa332a393555c2f5ed660e30f",
   "layers": [
+    {
+      "index": 0,
+      "name": "Base",
+      "svg": "img/corne-base.svg",
+      "signal": "F13"
+    },
     {
       "index": 1,
       "name": "Sym",

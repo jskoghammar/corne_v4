@@ -5,7 +5,9 @@ The keymap and keylens used to share a mapping table maintained by hand in two
 repos. It drifted. This derives the mapping from a single parse of a single file
 so index, display-name, drawing and signal cannot disagree.
 
-Convention: layer index N emits a bare F13+N on entry. Base (0) has no signal.
+Convention: layer index N emits a bare F13+N on entry, and releasing any layer
+taps the index-0 signal (F13) so a consumer can hide on release rather than time
+out. Base is therefore a normal manifest row, not an omission.
 """
 from __future__ import annotations
 
@@ -57,21 +59,37 @@ def parse(keymap_text: str, keymap_name: str) -> list[dict]:
             "index": index,
             "name": name,
             "svg": f"img/{keymap_name}-{slug(name)}.svg",
+            "signal": signal.get(key),
         }
+        # Base is not entered through &lyr -- its signal is tapped on the way
+        # out of every other layer -- so it has no call site to check.
         if index > 0:
-            entry["signal"] = signal.get(key)
             entry["boundSignal"] = bound.get(key)
         layers.append(entry)
     return layers
 
 
-def check(layers: list[dict]) -> list[str]:
+def check(layers: list[dict], keymap_text: str) -> list[str]:
     problems = []
     for layer in layers:
         index, name = layer["index"], layer["name"]
-        if index == 0:
-            continue
         expected = f"F{SIGNAL_BASE + index}"
+
+        if index == 0:
+            if layer.get("signal") != expected:
+                problems.append(
+                    f"{name}: resting layer implies {expected}, "
+                    f"but SIG_{name.upper()} is {layer.get('signal')!r}"
+                )
+            # The resting signal is tapped after &mo is released, so the
+            # overlay hides on release instead of waiting out a timeout.
+            if not re.search(r"macro_release[^;]*?>\s*,\s*<&macro_tap\s+&kp\s+SIG_BASE",
+                             keymap_text, re.S):
+                problems.append(
+                    f"{name}: lyr does not tap SIG_BASE after releasing the layer"
+                )
+            continue
+
         declared = layer.get("signal")
         bound_to = layer.get("boundSignal")
         if declared != expected:
@@ -106,7 +124,7 @@ def main() -> int:
             print(layer["name"])
         return 0
 
-    problems = check(layers)
+    problems = check(layers, KEYMAP.read_text())
     if problems:
         print("layer signal check failed:", file=sys.stderr)
         for p in problems:
@@ -127,23 +145,18 @@ def main() -> int:
         except (subprocess.CalledProcessError, FileNotFoundError):
             commit = "unknown"
 
-    # Only signalled layers go in the manifest. Base has no entry event -- there
-    # is nothing to detect it by -- so it is not a binding target; keylens picks
-    # its drawing up as an ordinary SVG and binds it manually if wanted. Keeping
-    # it here with a null signal would break a consumer that types signal as
-    # non-optional, which is exactly what keylens does.
+    # Every layer ships, index 0 included: keylens reads the index-0 row as the
+    # resting layer, using its signal to dismiss the overlay and deliberately
+    # leaving its SVG unbound. Omitting the row is not a crash -- keylens falls
+    # back to timing overlays out -- which makes it exactly the kind of silent
+    # degradation the manifest exists to prevent.
     published = [
-        {k: v for k, v in layer.items() if k != "boundSignal"}
-        for layer in layers
-        if layer["index"] > 0
+        {k: v for k, v in layer.items() if k != "boundSignal"} for layer in layers
     ]
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"commit": commit, "layers": published}, indent=2) + "\n")
-    print(
-        f"wrote {OUT.relative_to(REPO)} "
-        f"({len(published)} signalled of {len(layers)} layers)"
-    )
+    print(f"wrote {OUT.relative_to(REPO)} ({len(published)} layers)")
     return 0
 
 

@@ -20,9 +20,14 @@
  * until it turned out five consecutive RSHFT taps trip macOS Sticky Keys and a
  * naked RGUI tap opens the Start menu inside a Windows VM.
  *
+ * Releasing a layer taps SIG_BASE, the index-0 signal, so keylens can hide the
+ * overlay on release instead of timing it out. Every layer is a momentary
+ * hold, so entry alone does not tell it how long the hold lasts.
+ *
  * keymap-drawer/layers.json is generated from these pairings and CI asserts
  * each one matches its layer index. Keep them in step.
  */
+#define SIG_BASE F13
 #define SIG_SYM F14
 #define SIG_NAV F15
 #define SIG_BT F16
@@ -134,6 +139,7 @@
                                 , <&macro_pause_for_release>
                                 , <&macro_param_1to1>
                                 , <&macro_release &mo MACRO_PLACEHOLDER>
+                                , <&macro_tap &kp SIG_BASE>
                                 ;
                 };
 

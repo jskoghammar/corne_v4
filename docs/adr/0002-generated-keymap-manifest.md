@@ -21,8 +21,12 @@ react to them.
 ## Consequences
 
 - Adding a layer needs no keylens change. It appears in the manifest.
-- The manifest lists **only signalled layers**. Base has no entry event, so it
-  is not a binding target; keylens treats its drawing as an ordinary SVG. The
-  drawing list is therefore not the manifest — it comes from `--layer-names`.
+- **Index 0 is the resting layer, and it is a normal manifest row.** Releasing
+  any layer taps its signal (`F13`), so keylens hides the overlay on release
+  instead of timing it out — every layer is a momentary hold, and entry alone
+  never says how long the hold lasts. keylens uses that row's signal to dismiss
+  and deliberately leaves its SVG unbound, so nothing draws Base at rest.
+- Omitting the resting row does not fail: keylens falls back to timing overlays
+  out. That silent degradation is exactly why the CI check covers index 0 too.
 - The manifest carries a commit sha so a stale overlay is visible rather than
   silently wrong. That replaces keylens' branch pin.
