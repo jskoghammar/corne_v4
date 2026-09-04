@@ -3,3 +3,4 @@ firmware*
 .DS_Store
 **/__pycache__/
 .env
+.flash-state.json
