@@ -1,4 +1,8 @@
-# Draw ZMK keymaps with one keymap-drawer invocation per layer.
+# Draw ZMK keymaps and generate the layer manifest keylens consumes.
+#
+# Layer names are NOT listed here. They come from layers.json, which is derived
+# from the keymap itself -- a hand-maintained list in this file would be one
+# more thing to drift out of step with the firmware.
 name: Draw ZMK keymaps
 on:
   workflow_dispatch:  # can be triggered manually
@@ -7,6 +11,7 @@ on:
       - "config/*.keymap"
       - "config/*.dtsi"
       - "config/keymap_drawer.config.yaml"
+      - "scripts/gen_layers_manifest.py"
       - ".github/workflows/draw-keymaps.yml"
       # - 'boards/*/*/*.keymap'
 
@@ -15,7 +20,6 @@ permissions:
 
 env:
   KEYMAP_PATTERNS: "config/*.keymap"
-  KEYMAP_LAYERS: "Base Sym Nav"
   OUTPUT_FOLDER: "keymap-drawer"
 
 jobs:
@@ -32,7 +36,12 @@ jobs:
       - name: Install keymap-drawer
         run: pip install keymap-drawer
 
-      - name: Draw one SVG per configured layer
+      # Fails the build if a layer's signal stops matching its index, or if a
+      # layer is held with the wrong SIG_ constant.
+      - name: Check layer signals
+        run: python3 scripts/gen_layers_manifest.py --check
+
+      - name: Draw one SVG per layer and generate the manifest
         shell: bash
         run: |
           set -euo pipefail
@@ -41,13 +50,22 @@ jobs:
           rm -rf "${OUTPUT_FOLDER}"
           mkdir -p "${OUTPUT_FOLDER}" "${OUTPUT_FOLDER}/img"
 
-          drawer_config="config/keymap_drawer.config.yaml"
+          python3 scripts/gen_layers_manifest.py --commit "${GITHUB_SHA}"
 
-          read -r -a layers <<< "${KEYMAP_LAYERS}"
+          # Every layer gets drawn, including Base. layers.json deliberately
+          # lists only the signalled layers, so the draw list comes from the
+          # keymap parse directly rather than from the manifest.
+          layers=()
+          while IFS= read -r layer; do
+            [[ -n "${layer}" ]] && layers+=("${layer}")
+          done < <(python3 scripts/gen_layers_manifest.py --layer-names)
           if [[ ${#layers[@]} -eq 0 ]]; then
-            echo "KEYMAP_LAYERS must include at least one layer name."
+            echo "No layers found in the keymap."
             exit 1
           fi
+          echo "Drawing layers: ${layers[*]}"
+
+          drawer_config="config/keymap_drawer.config.yaml"
 
           keymaps=( ${KEYMAP_PATTERNS} )
           if [[ ${#keymaps[@]} -eq 0 ]]; then
