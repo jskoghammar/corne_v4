@@ -69,7 +69,7 @@ layers:
   - {t: ö, s: Ö}
   - {t: ä, s: Ä}
   - LCTRL
-  - ALT
+  - ''
   - ''
   - ''
   - ''
@@ -81,7 +81,7 @@ layers:
   - {t: '#', s: '~'}
   - ⌫
   - LGUI
-  - {t: ▽, type: trans}
+  - ALT
   - ␠
   - ⏎
   - {t: ▽, type: trans}
