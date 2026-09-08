@@ -100,7 +100,7 @@ layers:
   - ''
   - ⌫
   - LSHFT
-  - CTR
+  - CNTR
   - MAX
   - {t: DSP, h: ⌃⌥⌘}
   - {t: HLF, h: ⌃⌥}
