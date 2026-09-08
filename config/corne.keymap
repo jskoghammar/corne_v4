@@ -241,7 +241,7 @@
                 nav_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  BT |     |     |     |     |   | TL  | TR  |     |     |     | BKSP |
-// | SHFT | CTR | MAX | DSP | HLF |     |   | LFT | DWN |  UP | RGT |     | SHFT |
+// | SHFT | CNTR | MAX | DSP | HLF |     |   | LFT | DWN |  UP | RGT |     | SHFT |
 // | CTRL |     | HRS | HRM |     |     |   | BL  | BR  |S-HOM|S-END| "|" |      |
 //                    | GUI | ALT | SPC |   | ENT |     |     |
 //
