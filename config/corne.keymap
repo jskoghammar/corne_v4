@@ -90,22 +90,6 @@
                         keep-mods = <0>;
                 };
 
-                comma_excl: comma_excl {
-                        compatible = "zmk,behavior-mod-morph";
-                        #binding-cells = <0>;
-                        bindings = <&kp COMMA>, <&kp LS(N1)>;
-                        mods = <(MOD_LSFT|MOD_RSFT)>;
-                        keep-mods = <0>;
-                };
-
-                dot_dquote: dot_dquote {
-                        compatible = "zmk,behavior-mod-morph";
-                        #binding-cells = <0>;
-                        bindings = <&kp DOT>, <&kp LS(N2)>;
-                        mods = <(MOD_LSFT|MOD_RSFT)>;
-                        keep-mods = <0>;
-                };
-
                 /*
                  * British-PC crosses the two ISO keycodes: macOS hands GRAVE
                  * the backslash key and NON_US_BSLH the backtick key, the
@@ -205,13 +189,17 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
 // | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  | '/SH |
-// | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   | ,!  | ."  |  /  |  -   |
+// | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  -   |
 //                    | GUI | NAV | SPC |   | ENT | SYM  | ESC |
+//
+// Shift+,/. are left at their stock meaning (< >) so the Corne agrees with
+// every unprogrammed keyboard in the fleet -- see ADR 0001. ! and " moved to
+// Sym, where the rest of the shifted-numeral row already lives.
                         display-name = "Base";
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I       &kp O       &kp P    &kp BSPC
-   &kp LSHFT &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K       &kp L       &kp SEMI &qshft RSHFT SQT
-   &kp LCTRL &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &comma_excl &dot_dquote &kp FSLH &kp MINUS
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I    &kp O   &kp P    &kp BSPC
+   &kp LSHFT &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K    &kp L   &kp SEMI &qshft RSHFT SQT
+   &kp LCTRL &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp MINUS
           &kp LGUI &lyr LAYER_NAV SIG_NAV    &kp SPACE   &kp RET &lyr LAYER_SYM SIG_SYM   &kp ESC
                         >;
                 };
@@ -220,7 +208,7 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  $  |  (  |  )  |  [  |  ]  |  å   |
 // | SHFT |  6  |  7  |  8  |  9  |  0  |   |  =  |  +  |  %  |  '  |  ö  |  ä   |
-// | CTRL |     |     |     |     |  @  |   |  ^  |  &  |  *  |  `  |  #  | BKSP |
+// | CTRL |     |     |     |  !  |  "  |   |  ^  |  &  |  *  |  `  |  #  | BKSP |
 //                    | GUI | ALT | SPC |   | ENT |     |     |
 //
 // Alt sits on the left thumb, not under the digits: every digit is a left-hand
@@ -232,18 +220,24 @@
 // keys right of L. That displaces # and backspace to row 2, and means row 1 col
 // 11 is not shift on this layer -- see agents.md.
 //
-// Row 2 col 5 sends Shift+' directly, since @ was otherwise only reachable as a
-// three-key chord: base's ' is qshft, whose hold IS the shift, so Sym is the
-// only place @ can get a key of its own.
-//
 // Row 2 col 9 types backtick from NON_US_BSLH, not GRAVE -- see
 // pipe_bslash_swap for the crossing. Shifted it gives not-sign, not tilde;
 // tilde is row 2 col 10.
+//
+// Row 0 cols 9-10 ([ ]) are bare taps, so Shift+[ and Shift+] still reach
+// { and } the ordinary way -- no dedicated key for curlies, same as any
+// other shiftable key on this layer.
+//
+// @ has no key of its own: it's Shift+' (row 1 col 0 + row 1 col 9), the same
+// chord base's qshft makes -- Sym's plain shift key covers it, since row 1
+// col 9 is a bare apostrophe tap here rather than qshft's hold. That frees
+// row 2 cols 4-5 for the exclamation/quote pair that moved off Base's comma
+// and period (see Base's comment -- ADR 0001).
                         display-name = "Sym";
                         bindings = <
    &kp TAB   &kp N1   &kp N2 &kp N3 &kp N4 &kp N5   &kp LS(N4) &kp LS(N9) &kp LS(N0) &kp LBKT  &kp RBKT        &sv_aring
    &kp LSHFT &kp N6   &kp N7 &kp N8 &kp N9 &kp N0   &kp EQUAL  &kp PLUS   &kp LS(N5) &kp SQT   &sv_odiaer      &sv_adiaer
-   &kp LCTRL &none    &none  &none  &none  &kp LS(SQT) &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp NON_US_BSLH &kp NON_US_HASH &kp BSPC
+   &kp LCTRL &none    &none  &none  &kp LS(N1) &kp LS(N2) &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp NON_US_BSLH &kp NON_US_HASH &kp BSPC
           &kp LGUI &kp LALT                         &kp SPACE  &kp RET &trans        &trans
                         >;
                 };
