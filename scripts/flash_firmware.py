@@ -291,6 +291,37 @@ def resolve_firmware(
     die(f"could not find default {side} firmware UF2")
 
 
+def local_build_cmd(board: str, build_matrix: Path | None) -> list[str]:
+    """Argv for the build that --build runs before flashing.
+
+    Spawned rather than imported: build_local.main() parses sys.argv itself, so
+    in-process it would read this script's arguments, and its die() would exit
+    here instead of handing back a code we can refuse to flash on.
+
+    --build-matrix is only forwarded when it was given, so the default stays
+    build_local's to resolve rather than being pinned from this side.
+    """
+    cmd = [
+        sys.executable,
+        str(Path(__file__).resolve().parent / "build_local.py"),
+        "--both",
+        "--board",
+        board,
+    ]
+    if build_matrix is not None:
+        cmd += ["--build-matrix", str(build_matrix)]
+    return cmd
+
+
+def run_local_build(board: str, build_matrix: Path | None) -> None:
+    cmd = local_build_cmd(board, build_matrix)
+    print("Building both halves first:")
+    print(f"  {' '.join(cmd)}\n")
+    if subprocess.run(cmd, check=False).returncode != 0:
+        die("local build failed; nothing was flashed")
+    print()
+
+
 def flash_file_to_mount(firmware: Path, mount_path: Path) -> None:
     destination = mount_path / FLASH_FILENAME
     max_attempts = 3
@@ -406,6 +437,14 @@ def main() -> int:
     parser.add_argument("--no-unmount", action="store_true", help="Do not unmount volumes after copying")
     parser.add_argument("--build-matrix", type=Path, help="Path to build matrix YAML (default: <repo>/build.yaml)")
     parser.add_argument("--board", default=DEFAULT_BOARD, help=f"Board to select from build matrix (default: {DEFAULT_BOARD})")
+    parser.add_argument(
+        "--build",
+        action="store_true",
+        help=(
+            "Build both halves locally first, then flash what that produces. "
+            "Incremental; run build_local.py directly for --pristine"
+        ),
+    )
     args = parser.parse_args()
 
     if sys.platform != "darwin":
@@ -423,6 +462,9 @@ def main() -> int:
     for key in ("kUSBSerialNumberString", "kUSBAddress", "locationId"):
         if key not in primary or key not in secondary:
             die(f"{args.env_file} is missing required key '{key}' in primary/secondary")
+
+    if args.build:
+        run_local_build(args.board, args.build_matrix)
 
     left_firmware = resolve_firmware("left", args.left_uf2, root_dir, build_matrix_path, args.board)
     right_firmware = resolve_firmware("right", args.right_uf2, root_dir, build_matrix_path, args.board)
