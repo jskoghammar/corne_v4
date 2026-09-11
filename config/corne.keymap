@@ -208,7 +208,7 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  $  |  (  |  )  |  [  |  ]  |  å   |
 // | SHFT |  6  |  7  |  8  |  9  |  0  |   |  =  |  +  |  %  |  '  |  ö  |  ä   |
-// | CTRL |     |     |     |  !  |  "  |   |  ^  |  &  |  *  |  `  |  #  | BKSP |
+// | CTRL |     |     |  `  |  !  |  "  |   |  ^  |  &  |  *  |  .  |  #  | BKSP |
 //                    | GUI | ALT | SPC |   | ENT | SYM |     |
 //
 // Alt sits on the left thumb, not under the digits: every digit is a left-hand
@@ -220,9 +220,15 @@
 // keys right of L. That displaces # and backspace to row 2, and means row 1 col
 // 11 is not shift on this layer -- see agents.md.
 //
-// Row 2 col 9 types backtick from NON_US_BSLH, not GRAVE -- see
-// pipe_bslash_swap for the crossing. Shifted it gives not-sign, not tilde;
-// tilde is row 2 col 10.
+// Row 2 col 9 is a period, the same physical key that types one on Base and on
+// any bare keyboard -- no new position to learn. Version numbers forced it: with
+// the dot on Base only, every "1.2.3" had to release Sym and take it again
+// between digits. Shifted it gives > , exactly as it does on Base.
+//
+// That displaced the backtick to row 2 col 3, which costs nothing: col 9 was no
+// more standard a home for it than col 3 is. It types from NON_US_BSLH, not
+// GRAVE -- see pipe_bslash_swap for the crossing -- and shifted it gives
+// not-sign, not tilde; tilde is row 2 col 10. Row 2 cols 1-2 are still free.
 //
 // Row 0 cols 9-10 ([ ]) are bare taps, so Shift+[ and Shift+] still reach
 // { and } the ordinary way -- no dedicated key for curlies, same as any
@@ -237,7 +243,7 @@
                         bindings = <
    &kp TAB   &kp N1   &kp N2 &kp N3 &kp N4 &kp N5   &kp LS(N4) &kp LS(N9) &kp LS(N0) &kp LBKT  &kp RBKT        &sv_aring
    &kp LSHFT &kp N6   &kp N7 &kp N8 &kp N9 &kp N0   &kp EQUAL  &kp PLUS   &kp LS(N5) &kp SQT   &sv_odiaer      &sv_adiaer
-   &kp LCTRL &none    &none  &none  &kp LS(N1) &kp LS(N2) &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp NON_US_BSLH &kp NON_US_HASH &kp BSPC
+   &kp LCTRL &none    &none  &kp NON_US_BSLH &kp LS(N1) &kp LS(N2) &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp DOT &kp NON_US_HASH &kp BSPC
           &kp LGUI &kp LALT                         &kp SPACE  &kp RET &trans        &trans
                         >;
                 };
