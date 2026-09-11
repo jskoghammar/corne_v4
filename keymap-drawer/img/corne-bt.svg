@@ -224,6 +224,42 @@ text.key, text.combo {
 .keypos-41 rect.key:not(.held):not(.ghost) {
   fill: var(--finger-thumb);
 }
+
+/*
+  The keys held to reach a layer, faded on that layer's own drawing: keypos-37
+  (Base:3:1, NAV) and keypos-40 (Base:3:4, SYM), plus keypos-1 and keypos-37
+  together for BT. A held key cannot also be pressed, so nothing on it is
+  reachable -- the fade says so instead of the drawing quietly showing a
+  binding that never fires.
+
+  Hardcoded per layer because keymap-drawer only auto-marks activators it
+  recognises as layer behaviors, and the lyr macro reaches it as a raw
+  binding string instead. Keep in step with Base's thumb row.
+
+  No ampersands anywhere in this style block: it is emitted into the SVG
+  verbatim, outside CDATA, so a bare one is an XML parse error.
+*/
+.layer-Nav .keypos-37,
+.layer-Sym .keypos-40,
+.layer-BT .keypos-1,
+.layer-BT .keypos-37 {
+  opacity: 0.55;
+}
+
+/*
+  Dashed outline as well as the fade, borrowing the drawer's own ghost-key
+  idiom. Fade alone is a light-mode cue: the thumb fill is near-black in both
+  schemes, so in dark mode a faded thumb sinks into the background and takes
+  its legend with it. The dash survives either way, and the stroke colour
+  still comes from the scheme.
+*/
+.layer-Nav .keypos-37 rect.key,
+.layer-Sym .keypos-40 rect.key,
+.layer-BT .keypos-1 rect.key,
+.layer-BT .keypos-37 rect.key {
+  stroke-dasharray: 4, 4;
+  stroke-width: 2;
+}
 </style>
 <g transform="translate(30, 0)" class="layer-BT">
 <text x="0" y="28" class="label" id="BT">BT:</text>
@@ -232,11 +268,9 @@ text.key, text.combo {
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">↹</text>
 </g>
-<g transform="translate(84, 49)" class="key keypos-1">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">1</tspan>
-</text>
+<g transform="translate(84, 49)" class="key trans keypos-1">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
+<text x="0" y="0" class="key trans tap">▽</text>
 </g>
 <g transform="translate(140, 35)" class="key keypos-2">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -289,6 +323,9 @@ text.key, text.combo {
 </g>
 <g transform="translate(140, 91)" class="key keypos-14">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">BT</tspan><tspan x="0" dy="1.2em">1</tspan>
+</text>
 </g>
 <g transform="translate(196, 84)" class="key keypos-15">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>

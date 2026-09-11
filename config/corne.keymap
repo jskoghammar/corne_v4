@@ -90,26 +90,16 @@
                         keep-mods = <0>;
                 };
 
-                comma_excl: comma_excl {
-                        compatible = "zmk,behavior-mod-morph";
-                        #binding-cells = <0>;
-                        bindings = <&kp COMMA>, <&kp LS(N1)>;
-                        mods = <(MOD_LSFT|MOD_RSFT)>;
-                        keep-mods = <0>;
-                };
-
-                dot_dquote: dot_dquote {
-                        compatible = "zmk,behavior-mod-morph";
-                        #binding-cells = <0>;
-                        bindings = <&kp DOT>, <&kp LS(N2)>;
-                        mods = <(MOD_LSFT|MOD_RSFT)>;
-                        keep-mods = <0>;
-                };
-
+                /*
+                 * British-PC crosses the two ISO keycodes: macOS hands GRAVE
+                 * the backslash key and NON_US_BSLH the backtick key, the
+                 * opposite of what the HID names promise. So | and \ sit on
+                 * GRAVE here, and Sym's backtick is NON_US_BSLH.
+                 */
                 pipe_bslash_swap: pipe_bslash_swap {
                         compatible = "zmk,behavior-mod-morph";
                         #binding-cells = <0>;
-                        bindings = <&kp LS(NON_US_BSLH)>, <&kp NON_US_BSLH>;
+                        bindings = <&kp LS(GRAVE)>, <&kp GRAVE>;
                         mods = <(MOD_LSFT|MOD_RSFT)>;
                         keep-mods = <0>;
                 };
@@ -199,13 +189,17 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
 // | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  | '/SH |
-// | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   | ,!  | ."  |  /  |  -   |
+// | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  -   |
 //                    | GUI | NAV | SPC |   | ENT | SYM  | ESC |
+//
+// Shift+,/. are left at their stock meaning (< >) so the Corne agrees with
+// every unprogrammed keyboard in the fleet -- see ADR 0001. ! and " moved to
+// Sym, where the rest of the shifted-numeral row already lives.
                         display-name = "Base";
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I       &kp O       &kp P    &kp BSPC
-   &kp LSHFT &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K       &kp L       &kp SEMI &qshft RSHFT SQT
-   &kp LCTRL &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &comma_excl &dot_dquote &kp FSLH &kp MINUS
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I    &kp O   &kp P    &kp BSPC
+   &kp LSHFT &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K    &kp L   &kp SEMI &qshft RSHFT SQT
+   &kp LCTRL &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp MINUS
           &kp LGUI &lyr LAYER_NAV SIG_NAV    &kp SPACE   &kp RET &lyr LAYER_SYM SIG_SYM   &kp ESC
                         >;
                 };
@@ -214,8 +208,8 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  $  |  (  |  )  |  [  |  ]  |  å   |
 // | SHFT |  6  |  7  |  8  |  9  |  0  |   |  =  |  +  |  %  |  '  |  ö  |  ä   |
-// | CTRL |     |     |     |     |  @  |   |  ^  |  &  |  *  |  `  |  #  | BKSP |
-//                    | GUI | ALT | SPC |   | ENT |     |     |
+// | CTRL |     |     |  `  |  !  |  "  |   |  ^  |  &  |  *  |  .  |  #  | BKSP |
+//                    | GUI | ALT | SPC |   | ENT | SYM |     |
 //
 // Alt sits on the left thumb, not under the digits: every digit is a left-hand
 // key, so a same-hand Alt made Option+4 a claw. The thumb is free while the
@@ -226,14 +220,30 @@
 // keys right of L. That displaces # and backspace to row 2, and means row 1 col
 // 11 is not shift on this layer -- see agents.md.
 //
-// Row 2 col 5 sends Shift+' directly, since @ was otherwise only reachable as a
-// three-key chord: base's ' is qshft, whose hold IS the shift, so Sym is the
-// only place @ can get a key of its own.
+// Row 2 col 9 is a period, the same physical key that types one on Base and on
+// any bare keyboard -- no new position to learn. Version numbers forced it: with
+// the dot on Base only, every "1.2.3" had to release Sym and take it again
+// between digits. Shifted it gives > , exactly as it does on Base.
+//
+// That displaced the backtick to row 2 col 3, which costs nothing: col 9 was no
+// more standard a home for it than col 3 is. It types from NON_US_BSLH, not
+// GRAVE -- see pipe_bslash_swap for the crossing -- and shifted it gives
+// not-sign, not tilde; tilde is row 2 col 10. Row 2 cols 1-2 are still free.
+//
+// Row 0 cols 9-10 ([ ]) are bare taps, so Shift+[ and Shift+] still reach
+// { and } the ordinary way -- no dedicated key for curlies, same as any
+// other shiftable key on this layer.
+//
+// @ has no key of its own: it's Shift+' (row 1 col 0 + row 1 col 9), the same
+// chord base's qshft makes -- Sym's plain shift key covers it, since row 1
+// col 9 is a bare apostrophe tap here rather than qshft's hold. That frees
+// row 2 cols 4-5 for the exclamation/quote pair that moved off Base's comma
+// and period (see Base's comment -- ADR 0001).
                         display-name = "Sym";
                         bindings = <
    &kp TAB   &kp N1   &kp N2 &kp N3 &kp N4 &kp N5   &kp LS(N4) &kp LS(N9) &kp LS(N0) &kp LBKT  &kp RBKT        &sv_aring
    &kp LSHFT &kp N6   &kp N7 &kp N8 &kp N9 &kp N0   &kp EQUAL  &kp PLUS   &kp LS(N5) &kp SQT   &sv_odiaer      &sv_adiaer
-   &kp LCTRL &none    &none  &none  &none  &kp LS(SQT) &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp GRAVE &kp NON_US_HASH &kp BSPC
+   &kp LCTRL &none    &none  &kp NON_US_BSLH &kp LS(N1) &kp LS(N2) &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp DOT &kp NON_US_HASH &kp BSPC
           &kp LGUI &kp LALT                         &kp SPACE  &kp RET &trans        &trans
                         >;
                 };
@@ -241,36 +251,52 @@
                 nav_layer {
 // -----------------------------------------------------------------------------------------
 // |  TAB |  BT |     |     |     |     |   | TL  | TR  |     |     |     | BKSP |
-// | SHFT | CNTR | MAX | DSP | HLF |     |   | LFT | DWN |  UP | RGT |     | SHFT |
+// | SHFT | CNTR | MAX | HLF | ALT | DSP |   | LFT | DWN |  UP | RGT |     | SHFT |
 // | CTRL |     | HRS | HRM |     |     |   | BL  | BR  |S-HOM|S-END| "|" |      |
-//                    | GUI | ALT | SPC |   | ENT |     |     |
+//                    | GUI | NAV | SPC |   | ENT |     |     |
 //
 // Window management is a held modifier plus a direction, not a combo and not a
 // decoder ring -- the Corne emits exactly the chord a bare keyboard emits.
-//   HLF (row 1 col 4) holds Ctrl+Alt: arrows snap halves, TL/TR/BL/BR snap corners.
-//   DSP (row 1 col 3) holds Ctrl+Alt+Gui: arrows move the window between displays.
+//   ALT (row 1 col 4) holds plain Alt: arrows jump words, BKSP deletes one.
+//   HLF (row 1 col 3) holds Ctrl+Alt: arrows snap halves, TL/TR/BL/BR snap corners.
+//   DSP (row 1 col 5) holds Ctrl+Alt+Gui: arrows move the window between displays.
 //   CTRL (row 2 col 0) is already there: arrows switch macOS Spaces.
 // All of these are Rectangle's factory bindings. Nothing here needs Rectangle to
 // be configured, only installed.
+//
+// Left-hand order is by frequency, not by grouping: index home (col 4) takes the
+// most-used hold and the inner stretch (col 5) the least -- word jump beats half
+// snapping beats display move. Alt cannot sit on the thumb here the way it does
+// on Sym: row 3 col 1 *is* the Nav key, held down to be on this layer at all, so
+// a binding there is unreachable. It is &trans for that reason.
+//
+// Row 2's empties are &none rather than &trans: as &trans they fell through to
+// Base and typed Z, V and B mid-hold, while the map above showed them empty.
                         display-name = "Nav";
                         bindings = <
    &kp TAB   &lyr LAYER_BT SIG_BT &none &none            &none         &none   &kp U    &kp I    &none        &none      &none             &kp BSPC
-   &kp LSHFT &kp LC(LA(C)) &kp LC(LA(RET)) &kp LC(LA(LGUI)) &kp LC(LALT) &none  &kp LEFT &kp DOWN &kp UP       &kp RIGHT  &none             &kp RSHFT
-   &kp LCTRL &trans        &hrs            &hrm             &trans       &trans &kp J    &kp K    &kp LS(HOME) &kp LS(END) &pipe_bslash_swap &none
-          &kp LGUI &kp LALT                                 &kp SPACE    &kp RET &trans  &trans
+   &kp LSHFT &kp LC(LA(C)) &kp LC(LA(RET)) &kp LC(LALT) &kp LALT &kp LC(LA(LGUI)) &kp LEFT &kp DOWN &kp UP       &kp RIGHT   &none             &kp RSHFT
+   &kp LCTRL &none         &hrs            &hrm         &none    &none            &kp J    &kp K    &kp LS(HOME) &kp LS(END) &pipe_bslash_swap &none
+          &kp LGUI &trans                                   &kp SPACE    &kp RET &trans  &trans
                         >;
                 };
 
                 bt_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB | BT 1 | BT 2 | BT 3 | BT 4 | BT 5 |   |     |     |     |     |     | BKSP |
-// |      |      |      |      |      |      |   |     |     |     |     |     |      |
+// |  TAB |  BT  | BT 2 | BT 3 | BT 4 | BT 5 |   |     |     |     |     |     | BKSP |
+// |      |      | BT 1 |      |      |      |   |     |     |     |     |     |      |
 // |      |      |      |      |      |      |   |     |     |     |     |     |      |
 //                    |     |     |     |   |     |     |     |
+//
+// BT 1 is off the row and one column in, at row 1 col 2. Row 0 col 1 is the BT
+// key itself and held BT_SEL 0 until now, which made profile 0 -- the profile
+// the keyboard boots on -- the one host you could not switch back to. Row 1 col
+// 1 would not have fixed it: that is the same pinky column as the key being
+// held. Col 2 is the ring finger's home key, and the ring finger is free.
                         display-name = "BT";
                         bindings = <
-   &kp TAB   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &none &none &none &none &none &kp BSPC
-   &none     &none        &none        &none        &none        &none          &none &none &none &none &none &none
+   &kp TAB   &trans       &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &none &none &none &none &none &kp BSPC
+   &none     &none        &bt BT_SEL 0 &none        &none        &none          &none &none &none &none &none &none
    &none     &none        &none        &none        &none        &none          &none &none &none &none &none &none
                   &trans   &trans                                &trans      &trans  &trans         &trans
                         >;
