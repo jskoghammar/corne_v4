@@ -190,7 +190,7 @@
 // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
 // | SHFT |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  | '/SH |
 // | CTRL |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |  -   |
-//                    | GUI | NAV | SPC |   | ENT | SYM  | ESC |
+//                    | NAV | GUI | SPC |   | ENT | SYM  | ESC |
 //
 // Shift+,/. are left at their stock meaning (< >) so the Corne agrees with
 // every unprogrammed keyboard in the fleet -- see ADR 0001. ! and " moved to
@@ -200,7 +200,7 @@
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I    &kp O   &kp P    &kp BSPC
    &kp LSHFT &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K    &kp L   &kp SEMI &qshft RSHFT SQT
    &kp LCTRL &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp MINUS
-          &kp LGUI &lyr LAYER_NAV SIG_NAV    &kp SPACE   &kp RET &lyr LAYER_SYM SIG_SYM   &kp ESC
+          &lyr LAYER_NAV SIG_NAV &kp LGUI    &kp SPACE   &kp RET &lyr LAYER_SYM SIG_SYM   &kp ESC
                         >;
                 };
 
@@ -252,8 +252,8 @@
 // -----------------------------------------------------------------------------------------
 // |  TAB |  BT |     |     |     |     |   | TL  | TR  |     |     |     | BKSP |
 // | SHFT | CNTR | MAX | HLF | ALT | DSP |   | LFT | DWN |  UP | RGT |     | SHFT |
-// | CTRL |     | HRS | HRM |     |     |   | BL  | BR  |S-HOM|S-END| "|" |      |
-//                    | GUI | NAV | SPC |   | ENT |     |     |
+// | CTRL |     | HRS | HRM |     |     |   | BL  | BR  |HOME | END | "|" |      |
+//                    | NAV | GUI | SPC |   | ENT |     |     |
 //
 // Window management is a held modifier plus a direction, not a combo and not a
 // decoder ring -- the Corne emits exactly the chord a bare keyboard emits.
@@ -267,7 +267,7 @@
 // Left-hand order is by frequency, not by grouping: index home (col 4) takes the
 // most-used hold and the inner stretch (col 5) the least -- word jump beats half
 // snapping beats display move. Alt cannot sit on the thumb here the way it does
-// on Sym: row 3 col 1 *is* the Nav key, held down to be on this layer at all, so
+// on Sym: row 3 col 0 *is* the Nav key, held down to be on this layer at all, so
 // a binding there is unreachable. It is &trans for that reason.
 //
 // Row 2's empties are &none rather than &trans: as &trans they fell through to
@@ -276,8 +276,8 @@
                         bindings = <
    &kp TAB   &lyr LAYER_BT SIG_BT &none &none            &none         &none   &kp U    &kp I    &none        &none      &none             &kp BSPC
    &kp LSHFT &kp LC(LA(C)) &kp LC(LA(RET)) &kp LC(LALT) &kp LALT &kp LC(LA(LGUI)) &kp LEFT &kp DOWN &kp UP       &kp RIGHT   &none             &kp RSHFT
-   &kp LCTRL &none         &hrs            &hrm         &none    &none            &kp J    &kp K    &kp LS(HOME) &kp LS(END) &pipe_bslash_swap &none
-          &kp LGUI &trans                                   &kp SPACE    &kp RET &trans  &trans
+   &kp LCTRL &none         &hrs            &hrm         &none    &none            &kp J    &kp K    &kp HOME     &kp END &pipe_bslash_swap &none
+          &trans &kp LGUI                                   &kp SPACE    &kp RET &trans  &trans
                         >;
                 };
 

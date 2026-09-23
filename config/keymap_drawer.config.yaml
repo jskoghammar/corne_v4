@@ -37,9 +37,6 @@ parse_config:
     "&kp LS(N8)": "*"
     "&kp LS(N9)": "("
     "&kp LS(N0)": ")"
-    # Selection, not navigation: the shift is the whole point of these two.
-    "&kp LS(HOME)": "⇧Home"
-    "&kp LS(END)": "⇧End"
     "&pipe_bslash_swap": "|"
     "&kp TAB": "↹"
     "&kp BSPC": "⌫"
@@ -178,8 +175,8 @@ draw_config:
     }
 
     /*
-      The keys held to reach a layer, faded on that layer's own drawing: keypos-37
-      (Base:3:1, NAV) and keypos-40 (Base:3:4, SYM), plus keypos-1 and keypos-37
+      The keys held to reach a layer, faded on that layer's own drawing: keypos-36
+      (Base:3:0, NAV) and keypos-40 (Base:3:4, SYM), plus keypos-1 and keypos-36
       together for BT. A held key cannot also be pressed, so nothing on it is
       reachable -- the fade says so instead of the drawing quietly showing a
       binding that never fires.
@@ -191,10 +188,10 @@ draw_config:
       No ampersands anywhere in this style block: it is emitted into the SVG
       verbatim, outside CDATA, so a bare one is an XML parse error.
     */
-    .layer-Nav .keypos-37,
+    .layer-Nav .keypos-36,
     .layer-Sym .keypos-40,
     .layer-BT .keypos-1,
-    .layer-BT .keypos-37 {
+    .layer-BT .keypos-36 {
       opacity: 0.55;
     }
 
@@ -205,10 +202,10 @@ draw_config:
       its legend with it. The dash survives either way, and the stroke colour
       still comes from the scheme.
     */
-    .layer-Nav .keypos-37 rect.key,
+    .layer-Nav .keypos-36 rect.key,
     .layer-Sym .keypos-40 rect.key,
     .layer-BT .keypos-1 rect.key,
-    .layer-BT .keypos-37 rect.key {
+    .layer-BT .keypos-36 rect.key {
       stroke-dasharray: 4, 4;
       stroke-width: 2;
     }
