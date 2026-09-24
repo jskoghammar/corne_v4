@@ -38,10 +38,15 @@ def parse(keymap_text: str, keymap_name: str) -> list[dict]:
         m.group(1): m.group(2)
         for m in re.finditer(r"#define\s+SIG_(\w+)\s+(F\d+)", keymap_text)
     }
-    # Which signal each layer is actually bound with, from the &lyr call sites.
+    # Which signal each layer is actually bound with, from the &lyr call sites
+    # and from macros that fix the pair themselves (&mo, then the signal tap).
     bound = {
         m.group(1): m.group(2)
-        for m in re.finditer(r"&lyr\s+LAYER_(\w+)\s+SIG_(\w+)", keymap_text)
+        for pattern in (
+            r"&lyr\s+LAYER_(\w+)\s+SIG_(\w+)",
+            r"&macro_press\s+&mo\s+LAYER_(\w+)>\s*,\s*<&macro_tap\s+&kp\s+SIG_(\w+)",
+        )
+        for m in re.finditer(pattern, keymap_text)
     }
 
     keymap_node = re.search(r"keymap\s*\{(.*)\n\s*\};", keymap_text, re.S)

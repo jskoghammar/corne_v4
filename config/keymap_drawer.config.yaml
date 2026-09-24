@@ -61,6 +61,16 @@ parse_config:
     "&lyr 2 F15": {t: "NAV", h: "F15"}
     "&lyr 1 F14": {t: "SYM", h: "F14"}
     "&lyr 3 F16": {t: "BT", h: "F16"}
+    "&esc_edit 0 ESC": {t: "ESC", h: "EDIT"}
+
+    # Edit. The hold legend is the chord, since that is what a bare keyboard
+    # needs to do the same thing.
+    "&kp LG(LEFT)": {t: "⇤LN", h: "⌘←"}
+    "&kp LG(RIGHT)": {t: "LN⇥", h: "⌘→"}
+    "&kp LA(LEFT)": {t: "←WRD", h: "⌥←"}
+    "&kp LA(RIGHT)": {t: "WRD→", h: "⌥→"}
+    "&kp LA(BSPC)": {t: "⌫WRD", h: "⌥⌫"}
+    "&kp LA(DEL)": {t: "WRD⌦", h: "⌥⌦"}
 
     # Window management. Held modifiers, not tiers: these emit exactly the
     # chords Rectangle ships with by default.
@@ -176,8 +186,8 @@ draw_config:
 
     /*
       The keys held to reach a layer, faded on that layer's own drawing: keypos-36
-      (Base:3:0, NAV) and keypos-40 (Base:3:4, SYM), plus keypos-1 and keypos-36
-      together for BT. A held key cannot also be pressed, so nothing on it is
+      (Base:3:0, NAV), keypos-40 (Base:3:4, SYM) and keypos-41 (Base:3:5, EDIT),
+      plus keypos-1 and keypos-36 together for BT. A held key cannot also be pressed, so nothing on it is
       reachable -- the fade says so instead of the drawing quietly showing a
       binding that never fires.
 
@@ -190,6 +200,7 @@ draw_config:
     */
     .layer-Nav .keypos-36,
     .layer-Sym .keypos-40,
+    .layer-Edit .keypos-41,
     .layer-BT .keypos-1,
     .layer-BT .keypos-36 {
       opacity: 0.55;
@@ -204,6 +215,7 @@ draw_config:
     */
     .layer-Nav .keypos-36 rect.key,
     .layer-Sym .keypos-40 rect.key,
+    .layer-Edit .keypos-41 rect.key,
     .layer-BT .keypos-1 rect.key,
     .layer-BT .keypos-36 rect.key {
       stroke-dasharray: 4, 4;
