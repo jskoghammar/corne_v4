@@ -38,8 +38,8 @@ parse_config:
     "&kp LS(N9)": "("
     "&kp LS(N0)": ")"
     "&pipe_bslash_swap": "|"
-    "&kp TAB": "↹"
-    "&kp BSPC": "⌫"
+    "&kp TAB": "TAB"
+    "&kp BSPC": "BSPC"
     "&kp LEFT": "←"
     "&kp DOWN": "↓"
     "&kp UP": "↑"
@@ -47,11 +47,15 @@ parse_config:
     "&kp HOME": "HOME"
     "&kp END": "END"
     "&kp RET": "⏎"
-    "&kp SPACE": "␠"
+    "&kp SPACE": "└──┘"
     "&kp LALT": "ALT"
+    "&kp LGUI": "CMD"
+    "&kp LCTRL": "CTRL"
+    "&kp LSHFT": "SHIFT"
+    "&kp RSHFT": "SHIFT"
 
     # Apostrophe on the right-hand shift key.
-    "&qshft RSHFT SQT": {t: "'", h: "RSHFT"}
+    "&qshft RSHFT SQT": {t: "'", h: "SHIFT"}
 
     # Layer holds. Both the symbolic and preprocessed forms, since the drawer
     # sees whichever survives the C preprocessor.
