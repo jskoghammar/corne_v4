@@ -433,6 +433,13 @@ def main() -> int:
             "both: flash both sides regardless"
         ),
     )
+    parser.add_argument(
+        "--force",
+        dest="scope",
+        action="store_const",
+        const="both",
+        help="Same as --scope both: ignore the flash state and flash both sides",
+    )
     parser.add_argument("--timeout", type=int, default=180, help="Seconds to wait per side (default: 180)")
     parser.add_argument("--no-unmount", action="store_true", help="Do not unmount volumes after copying")
     parser.add_argument("--build-matrix", type=Path, help="Path to build matrix YAML (default: <repo>/build.yaml)")
@@ -488,7 +495,7 @@ def main() -> int:
     for side_name, flashed_at in skipped:
         print(f"Skipping {side_name}: identical to what was flashed on {flashed_at}.")
     if skipped:
-        print("Pass --scope both to flash every side anyway.")
+        print("Pass --force to flash every side anyway.")
 
     if not plan:
         print("\nNothing to do: both sides already carry this firmware.")
