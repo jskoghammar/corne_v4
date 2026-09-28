@@ -290,7 +290,7 @@
 
                 nav_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  BT |     | SCB | SCF |     |   | TL  | TR  |     |     |     | BKSP |
+// |  TAB |  BT |     | SSC | SSF |     |   | TL  | TR  |     |     |     | BKSP |
 // | SHFT | CNTR | MAX | HLF | ALT | DSP |   | LFT | DWN |  UP | RGT |     | SHFT |
 // | CTRL |     | HRS | HRM |     |     |   | BL  | BR  |HOME | END | "|" |      |
 //                    | NAV | GUI | SPC |   | ENT |     |     |
@@ -310,7 +310,7 @@
 // on Sym: row 3 col 0 *is* the Nav key, held down to be on this layer at all, so
 // a binding there is unreachable. It is &trans for that reason.
 //
-// SCB and SCF (row 0 cols 3-4) are region screenshots: Shift+Cmd+3 to the
+// SSC and SSF (row 0 cols 3-4) are region screenshots: Shift+Cmd+3 to the
 // clipboard and Shift+Cmd+4 to a file. The clipboard one is not macOS's
 // default (Ctrl+Shift+Cmd+4) but the shortcut the other keyboards are used
 // with, set by mac_setup, so the Corne and a bare keyboard stay the same.

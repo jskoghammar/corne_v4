@@ -74,14 +74,14 @@ parse_config:
 
     # Window management. Held modifiers, not tiers: these emit exactly the
     # chords Rectangle ships with by default.
-    "&kp LC(LALT)": {t: "HLF", h: "⌃⌥"}
-    "&kp LC(LA(LGUI))": {t: "DSP", h: "⌃⌥⌘"}
+    "&kp LC(LALT)": "HLF"
+    "&kp LC(LA(LGUI))": "DSP"
     "&kp LC(LA(RET))": "MAX"
     "&kp LC(LA(C))": "CNTR"
 
     # Region screenshots, on the shortcuts mac_setup sets.
-    "&kp LS(LG(N3))": {t: "SCB", h: "⇧⌘3"}
-    "&kp LS(LG(N4))": {t: "SCF", h: "⇧⌘4"}
+    "&kp LS(LG(N3))": "SSC"
+    "&kp LS(LG(N4))": "SSF"
 
     "&bt BT_SEL 0": "BT 1"
     "&bt BT_SEL 1": "BT 2"
