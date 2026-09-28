@@ -1,5 +1,5 @@
 {
-  "commit": "15b089559d45af30b4db7452e61abb6e18b1d08d",
+  "commit": "fb57882b4180c413da12dfc3f414b00dd0de3234",
   "layers": [
     {
       "index": 0,
@@ -24,6 +24,12 @@
       "name": "BT",
       "svg": "img/corne-bt.svg",
       "signal": "F16"
+    },
+    {
+      "index": 4,
+      "name": "Edit",
+      "svg": "img/corne-edit.svg",
+      "signal": "F17"
     }
   ]
 }

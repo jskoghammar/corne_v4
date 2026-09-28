@@ -112,6 +112,23 @@ def main() -> int:
     )
     check("skip reason falls back when timestamp missing", skipped[0][1], "an earlier run")
 
+    # --build shells out, so the argv is the only part that can silently drift.
+    check(
+        "build cmd targets both halves and the chosen board",
+        ff.local_build_cmd("nice_nano_v2", None)[2:],
+        ["--both", "--board", "nice_nano_v2"],
+    )
+    check(
+        "build cmd forwards an explicit build matrix",
+        ff.local_build_cmd("nice_nano_v2", Path("/tmp/alt.yaml"))[-2:],
+        ["--build-matrix", "/tmp/alt.yaml"],
+    )
+    check(
+        "build cmd runs build_local.py",
+        Path(ff.local_build_cmd("nice_nano_v2", None)[1]).name,
+        "build_local.py",
+    )
+
     with tempfile.TemporaryDirectory() as raw:
         tmp = Path(raw)
         check("missing state file -> {}", ff.read_flash_state(tmp / "absent.json"), {})

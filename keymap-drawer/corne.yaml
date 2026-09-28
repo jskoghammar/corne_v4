@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: corne}
 layers:
   Base:
-  - ↹
+  - TAB
   - Q
   - W
   - E
@@ -12,8 +12,8 @@ layers:
   - I
   - O
   - P
-  - ⌫
-  - LSHFT
+  - BSPC
+  - SHIFT
   - A
   - S
   - D
@@ -24,8 +24,8 @@ layers:
   - K
   - L
   - ;
-  - {t: '''', h: RSHFT}
-  - LCTRL
+  - {t: '''', h: SHIFT}
+  - CTRL
   - Z
   - X
   - C
@@ -33,18 +33,18 @@ layers:
   - B
   - N
   - M
-  - {t: ',', s: '!'}
-  - {t: ., s: '"'}
+  - ','
+  - .
   - /
   - '-'
-  - LGUI
   - {t: NAV, h: F15}
-  - ␠
+  - CMD
+  - └──┘
   - ⏎
   - {t: SYM, h: F14}
-  - ESC
+  - {t: ESC, h: EDIT}
   Sym:
-  - ↹
+  - TAB
   - '1'
   - '2'
   - '3'
@@ -53,10 +53,10 @@ layers:
   - $
   - (
   - )
-  - '['
-  - ']'
+  - {t: '[', s: '{'}
+  - {t: ']', s: '}'}
   - {t: å, s: Å}
-  - LSHFT
+  - SHIFT
   - '6'
   - '7'
   - '8'
@@ -65,73 +65,73 @@ layers:
   - '='
   - +
   - '%'
-  - ''''
+  - {t: '''', s: '@'}
   - {t: ö, s: Ö}
   - {t: ä, s: Ä}
-  - LCTRL
+  - CTRL
   - ''
   - ''
-  - ''
-  - ''
-  - '@'
+  - '`'
+  - '!'
+  - '"'
   - ^
   - '&'
   - '*'
-  - '`'
+  - .
   - {t: '#', s: '~'}
-  - ⌫
-  - LGUI
+  - BSPC
+  - CMD
   - ALT
-  - ␠
+  - └──┘
   - ⏎
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   Nav:
-  - ↹
+  - TAB
   - {t: BT, h: F16}
   - ''
-  - ''
-  - ''
+  - SSC
+  - SSF
   - ''
   - U
   - I
   - ''
   - ''
   - ''
-  - ⌫
-  - LSHFT
+  - BSPC
+  - SHIFT
   - CNTR
   - MAX
-  - {t: DSP, h: ⌃⌥⌘}
-  - {t: HLF, h: ⌃⌥}
-  - ''
+  - HLF
+  - ALT
+  - DSP
   - ←
   - ↓
   - ↑
   - →
   - ''
-  - RSHFT
-  - LCTRL
-  - {t: ▽, type: trans}
+  - SHIFT
+  - CTRL
+  - ''
   - HRS
   - HRM
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - ''
+  - ''
   - J
   - K
-  - Home
-  - End
+  - HOME
+  - END
   - '|'
   - ''
-  - LGUI
-  - ALT
-  - ␠
+  - {t: ▽, type: trans}
+  - CMD
+  - └──┘
   - ⏎
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   BT:
-  - ↹
-  - BT 1
+  - TAB
+  - {t: ▽, type: trans}
   - BT 2
   - BT 3
   - BT 4
@@ -141,10 +141,10 @@ layers:
   - ''
   - ''
   - ''
-  - ⌫
+  - BSPC
   - ''
   - ''
-  - ''
+  - BT 1
   - ''
   - ''
   - ''
@@ -171,4 +171,47 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  Edit:
+  - TAB
+  - ''
+  - {t: ⌫WRD, h: ⌥⌫}
+  - {t: WRD⌦, h: ⌥⌦}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - BSPC
+  - SHIFT
+  - {t: ⇤LN, h: ⌘←}
+  - {t: ←WRD, h: ⌥←}
+  - {t: WRD→, h: ⌥→}
+  - {t: LN⇥, h: ⌘→}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - SHIFT
+  - CTRL
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - CMD
+  - └──┘
+  - ⏎
+  - ''
   - {t: ▽, type: trans}
