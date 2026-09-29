@@ -67,14 +67,13 @@ parse_config:
     "&lyr 3 F16": {t: "BT", h: "F16"}
     "&esc_edit 0 ESC": {t: "ESC", h: "EDIT"}
 
-    # Edit. The hold legend is the chord, since that is what a bare keyboard
-    # needs to do the same thing.
-    "&kp LG(LEFT)": {t: "⇤LN", h: "⌘←"}
-    "&kp LG(RIGHT)": {t: "LN⇥", h: "⌘→"}
-    "&kp LA(LEFT)": {t: "←WRD", h: "⌥←"}
-    "&kp LA(RIGHT)": {t: "WRD→", h: "⌥→"}
-    "&kp LA(BSPC)": {t: "⌫WRD", h: "⌥⌫"}
-    "&kp LA(DEL)": {t: "WRD⌦", h: "⌥⌦"}
+    # Edit.
+    "&kp LG(LEFT)": "⇤LN"
+    "&kp LG(RIGHT)": "LN⇥"
+    "&kp LA(LEFT)": "←WRD"
+    "&kp LA(RIGHT)": "WRD→"
+    "&kp LA(BSPC)": "⌫WRD"
+    "&kp LA(DEL)": "WRD⌦"
 
     # Window management. Held modifiers, not tiers: these emit exactly the
     # chords Rectangle ships with by default.
