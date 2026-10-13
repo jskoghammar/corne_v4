@@ -175,8 +175,8 @@ layers:
   Edit:
   - TAB
   - ''
-  - {t: ⌫WRD, h: ⌥⌫}
-  - {t: WRD⌦, h: ⌥⌦}
+  - ⌫WRD
+  - WRD⌦
   - ''
   - ''
   - ''
@@ -186,10 +186,10 @@ layers:
   - ''
   - BSPC
   - SHIFT
-  - {t: ⇤LN, h: ⌘←}
-  - {t: ←WRD, h: ⌥←}
-  - {t: WRD→, h: ⌥→}
-  - {t: LN⇥, h: ⌘→}
+  - ⇤LN
+  - ←WRD
+  - WRD→
+  - LN⇥
   - ''
   - ''
   - ''
