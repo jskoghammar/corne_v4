@@ -246,58 +246,57 @@
 
                 symbol_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  $  |  (  |  )  |  [  |  ]  |  å   |
-// | SHFT |  6  |  7  |  8  |  9  |  0  |   |  =  |  +  |  %  |  '  |  ö  |  ä   |
-// | CTRL |     |     |  `  |  !  |  "  |   |  ^  |  &  |  *  |  .  |  #  | BKSP |
+// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  $  |  (  |  )  |  [  |  ]  | BKSP |
+// | SHFT |  6  |  7  |  8  |  9  |  0  |   |  =  |  +  |  %  |  *  |  ;  | '/SH |
+// | CTRL |     |  #  |  `  |  "  |  !  |   |  ^  |  &  |  ,  |  .  |  /  |  -   |
 //                    | GUI | ALT | SPC |   | ENT | SYM |     |
 //
 // Alt sits on the left thumb, not under the digits: every digit is a left-hand
 // key, so a same-hand Alt made Option+4 a claw. The thumb is free while the
 // fingers walk the row, which is the same arrangement Nav uses.
 //
-// Row 0 col 11, row 1 cols 10-11 hold a-ring, o-diaeresis and a-diaeresis at the
-// positions they occupy on a Swedish keyboard: a-ring right of P, then the two
-// keys right of L. That displaces # and backspace to row 2, and means row 1 col
-// 11 is not shift on this layer -- see agents.md.
+// Col 11, row 1 col 10 and row 2 cols 8-11 repeat Base key for key. Digits are
+// typed in runs with punctuation between them -- 2026-11-12, 24/7, 1,000, 12:30
+// -- and every one of those that Sym redefined forced a release and a re-take
+// of the layer, or a second backspace position to remember. Keep these seven in
+// step with Base. They are spelled out rather than &trans so the drawn map
+// shows the character instead of a pass-through marker.
 //
-// Row 2 col 9 is a period, the same physical key that types one on Base and on
-// any bare keyboard -- no new position to learn. Version numbers forced it: with
-// the dot on Base only, every "1.2.3" had to release Sym and take it again
-// between digits. Shifted it gives > , exactly as it does on Base.
+// The Swedish letters used to sit on three of those keys. They are on Nav now:
+// they belong to words, not to numbers, and they were what pushed backspace,
+// # and the apostrophe off their Base positions.
 //
-// That displaced the backtick to row 2 col 3, which costs nothing: col 9 was no
-// more standard a home for it than col 3 is. It types from NON_US_BSLH, not
-// GRAVE -- see pipe_bslash_swap for the crossing -- and shifted it gives
-// not-sign, not tilde; tilde is row 2 col 10. Row 2 cols 1-2 are still free.
+// Row 1 col 9 is * , closing the = + % run. Row 2 col 2 is # , which is its own
+// key on a UK layout and gives tilde shifted. The backtick at row 2 col 3 types
+// from NON_US_BSLH, not GRAVE -- see pipe_bslash_swap for the crossing -- and
+// shifted it gives not-sign. Row 2 col 1 is still free.
 //
 // Row 0 cols 9-10 ([ ]) are bare taps, so Shift+[ and Shift+] still reach
 // { and } the ordinary way -- no dedicated key for curlies, same as any
 // other shiftable key on this layer.
 //
-// @ has no key of its own: it's Shift+' (row 1 col 0 + row 1 col 9), the same
-// chord base's qshft makes -- Sym's plain shift key covers it, since row 1
-// col 9 is a bare apostrophe tap here rather than qshft's hold. That frees
-// row 2 cols 4-5 for the exclamation/quote pair that moved off Base's comma
-// and period (see Base's comment -- ADR 0001).
+// @ has no key of its own: it is Shift+' , the chord Base makes on the same
+// key. Row 2 cols 4-5 hold the quote/exclamation pair that moved off Base's
+// comma and period (see Base's comment -- ADR 0001).
                         display-name = "Sym";
                         bindings = <
-   &kp TAB   &kp N1   &kp N2 &kp N3 &kp N4 &kp N5   &kp LS(N4) &kp LS(N9) &kp LS(N0) &kp LBKT  &kp RBKT        &sv_aring
-   &kp LSHFT &kp N6   &kp N7 &kp N8 &kp N9 &kp N0   &kp EQUAL  &kp PLUS   &kp LS(N5) &kp SQT   &sv_odiaer      &sv_adiaer
-   &kp LCTRL &none    &none  &kp NON_US_BSLH &kp LS(N1) &kp LS(N2) &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp DOT &kp NON_US_HASH &kp BSPC
+   &kp TAB   &kp N1   &kp N2 &kp N3 &kp N4 &kp N5   &kp LS(N4) &kp LS(N9) &kp LS(N0) &kp LBKT   &kp RBKT &kp BSPC
+   &kp LSHFT &kp N6   &kp N7 &kp N8 &kp N9 &kp N0   &kp EQUAL  &kp PLUS   &kp LS(N5) &kp LS(N8) &kp SEMI &qshft RSHFT SQT
+   &kp LCTRL &none    &kp NON_US_HASH &kp NON_US_BSLH &kp LS(N2) &kp LS(N1) &kp LS(N6) &kp LS(N7) &kp COMMA &kp DOT &kp FSLH &kp MINUS
           &kp LGUI &kp LALT                         &kp SPACE  &kp RET &trans        &trans
                         >;
                 };
 
                 nav_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB |  BT |     | SSC | SSF |     |   | TL  | TR  |     |     |     | BKSP |
-// | SHFT | CNTR | MAX | HLF | ALT | DSP |   | LFT | DWN |  UP | RGT |     | SHFT |
+// |  TAB |  BT |     | SSC | SSF |     |   | TL  | TR  |     |     |     |  å   |
+// | SHFT | CNTR | MAX | HLF | ALT | DSP |   | LFT | DWN |  UP | RGT |  ö  |  ä   |
 // | CTRL |     | HRS | HRM |     |     |   | BL  | BR  |HOME | END | "|" |      |
 //                    | NAV | GUI | SPC |   | ENT |     |     |
 //
 // Window management is a held modifier plus a direction, not a combo and not a
 // decoder ring -- the Corne emits exactly the chord a bare keyboard emits.
-//   ALT (row 1 col 4) holds plain Alt: arrows jump words, BKSP deletes one.
+//   ALT (row 1 col 4) holds plain Alt: arrows jump words.
 //   HLF (row 1 col 3) holds Ctrl+Alt: arrows snap halves, TL/TR/BL/BR snap corners.
 //   DSP (row 1 col 5) holds Ctrl+Alt+Gui: arrows move the window between displays.
 //   CTRL (row 2 col 0) is already there: arrows switch macOS Spaces.
@@ -315,12 +314,19 @@
 // default (Ctrl+Shift+Cmd+4) but the shortcut the other keyboards are used
 // with, set by mac_setup, so the Corne and a bare keyboard stay the same.
 //
+// Row 0 col 11 and row 1 cols 10-11 hold a-ring, o-diaeresis and a-diaeresis at
+// the positions they occupy on a Swedish keyboard: a-ring right of P, then the
+// two keys right of L. Nav is held by the opposite thumb and had those keys to
+// spare. It costs Nav its backspace -- word delete is on Edit -- and row 1 col
+// 11 is not shift on this layer -- see agents.md. Row 1 col 0 still is, for the
+// capitals and for selecting.
+//
 // Row 2's empties are &none rather than &trans: as &trans they fell through to
 // Base and typed Z, V and B mid-hold, while the map above showed them empty.
                         display-name = "Nav";
                         bindings = <
-   &kp TAB   &lyr LAYER_BT SIG_BT &none &kp LS(LG(N3)) &kp LS(LG(N4)) &none   &kp U    &kp I    &none        &none      &none             &kp BSPC
-   &kp LSHFT &kp LC(LA(C)) &kp LC(LA(RET)) &kp LC(LALT) &kp LALT &kp LC(LA(LGUI)) &kp LEFT &kp DOWN &kp UP       &kp RIGHT   &none             &kp RSHFT
+   &kp TAB   &lyr LAYER_BT SIG_BT &none &kp LS(LG(N3)) &kp LS(LG(N4)) &none   &kp U    &kp I    &none        &none      &none             &sv_aring
+   &kp LSHFT &kp LC(LA(C)) &kp LC(LA(RET)) &kp LC(LALT) &kp LALT &kp LC(LA(LGUI)) &kp LEFT &kp DOWN &kp UP       &kp RIGHT   &sv_odiaer        &sv_adiaer
    &kp LCTRL &none         &hrs            &hrm         &none    &none            &kp J    &kp K    &kp HOME     &kp END &pipe_bslash_swap &none
           &trans &kp LGUI                                   &kp SPACE    &kp RET &trans  &trans
                         >;

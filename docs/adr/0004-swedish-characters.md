@@ -27,8 +27,12 @@ something only the OS can do, so there the Corne asks rather than acts.
 
 - The Corne types Swedish with BetterTouchTool uninstalled. The other keyboards
   do not.
-- Row 1 column 11 stops being shift on Sym, and Base taps apostrophe there. The
-  "always shift" rule in `agents.md` is written with those exceptions.
+- The letters live on Nav. They were on Sym first, where they took the
+  backspace, `;` and `'` positions and made dates, times and corrections
+  need a release of the layer between digits.
+- Row 1 column 11 stops being shift on Nav, and Base and Sym tap apostrophe
+  there. The "always shift" rule in `agents.md` is written with those
+  exceptions.
 - The Flow85 carries an Option/Command swap, which moves right-Option off its
   AltGr key. If no key right of its space bar produces right-Option, the
   fallback is plain left-Option at the cost of those three characters.
